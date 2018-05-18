@@ -1,0 +1,26 @@
+.dy-tooltip {
+  position: absolute;
+  box-shadow: 0 0 5px #333;
+  padding: 5px 10px;
+  width: auto;
+  white-space: nowrap;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.dy-tooltip:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid #333;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  position: absolute;
+  bottom: 100%;
+  left: 5px;
+}

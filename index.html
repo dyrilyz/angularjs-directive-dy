@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <link rel="stylesheet" href="directive/main.css">
+</head>
+<style>
+    body {
+        background-color: #fbfbfb;
+    }
+</style>
+<body>
+<div ng-app="test" style="margin: 15px" ng-controller="testSelector">
+    <!--dy-tooltip指令事例-->
+    <div>
+        <ul>
+            <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
+        </ul>
+    </div>
+    <!--dy-step指令-->
+    <div style="margin-top: 20px;">
+        <dy-step step-list="stepList" step="{{step}}"></dy-step>
+        <button ng-click="next()" style="margin:20px;">下一步</button>
+    </div>
+    <!--dy-selector指令-->
+    <h3>dy-selector指令示例：</h3>
+    <div style="margin: 20px 0; width: 250px;">
+        <dy-selector ng-model="a" dy-list="list" z-index="11"></dy-selector>
+        <div style="margin: 20px 0;">绑定在dy-selector伤的值：<span ng-bind="a"></span></div>
+    </div>
+
+    <div style="margin-top: 20px; width: 250px;">
+        {{b}}
+        <dy-selector ng-model="b" dy-list="list2" disabled></dy-selector>
+    </div>
+</div>
+<script src="directive/tooltip/tooltip.js"></script>
+<script src="directive/selector/selector.js"></script>
+<script src="directive/step/step.js"></script>
+<script>
+    // 随机为查询列表添加一组数据
+    function getArray() {
+        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        var result = []
+        for (var i = 0; i < 20; i++) {
+            result.push(
+                a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+                + a[parseInt(Math.random() * 10)]
+            )
+        }
+        return result
+    }
+
+    // 随机为查询列表添加一组对象
+    function getObjects() {
+        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        var b = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        var result = []
+        for (var i = 0; i < 20; i++) {
+            result.push({
+                key: b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)],
+                value: a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)]
+            })
+        }
+        return result
+    }
+
+    angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step'])
+        .controller('testSelector', function ($scope) {
+            $scope.list = getArray();
+            $scope.list2 = getObjects();
+            $scope.step = 0
+            $scope.stepList = ['第一步', '第二步', '第三步', '第四步', '第五步', '第六步']
+            $scope.next = function () {
+                $scope.step++
+            }
+        })
+</script>
+</body>
+</html>
