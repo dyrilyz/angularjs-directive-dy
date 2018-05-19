@@ -5,41 +5,82 @@
     <title>Title</title>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-animate.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="directive/main.css">
+    <style type="text/css">
+        .comment {
+            font-size: 14px;
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-color: #fbfbfb;
-    }
-</style>
 <body>
-<div ng-app="test" style="margin: 15px" ng-controller="testSelector">
-    <!--dy-tooltip指令事例-->
-    <div>
-        <ul>
-            <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
-            <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
-            <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
-            <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
-            <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
-            <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
-        </ul>
+<header class="navbar navbar-default">
+    <div class="container">
+        <h3>angularjs-directive-dy示例</h3>
     </div>
-    <!--dy-step指令-->
-    <div style="margin-top: 20px;">
-        <dy-step step-list="stepList" step="{{step}}"></dy-step>
-        <button ng-click="next()" style="margin:20px;">下一步</button>
-    </div>
-    <!--dy-selector指令-->
-    <h3>dy-selector指令示例：</h3>
-    <div style="margin: 20px 0; width: 250px;">
-        <dy-selector ng-model="a" dy-list="list" z-index="11"></dy-selector>
-        <div style="margin: 20px 0;">绑定在dy-selector上的值：<span ng-bind="a"></span></div>
+</header>
+<div ng-app="test" ng-controller="testSelector" class="container">
+
+    <!--dy-tooltip 指令事例-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">dy-tooltip 指令</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
+                <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
+                <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
+                <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
+                <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
+                <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div style="margin-top: 20px; width: 250px;">
-        {{b}}
-        <dy-selector ng-model="b" dy-list="list2" disabled></dy-selector>
+    <!--dy-step 指令-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">dy-step 指令</h3>
+        </div>
+        <div class="panel-body">
+            <dy-step step-list="stepList" step="1"></dy-step>
+        </div>
+    </div>
+
+    <!--dy-selector 指令-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">dy-selector 指令</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">字符串下拉框</label>
+                    <div class="col-sm-4">
+                        <dy-selector ng-model="a" dy-list="list" z-index="12"></dy-selector>
+                    </div>
+                    <div class="col-sm-4" style="line-height: 34px;">
+                        选择的值为：<span ng-bind="a"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">对象下拉框</label>
+                    <div class="col-sm-4">
+                        <dy-selector ng-model="b" dy-list="list2" z-index="11"></dy-selector>
+                    </div>
+                    <div class="col-sm-4" style="line-height: 34px;">
+                        选择的值为：<span ng-bind="b"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">禁用下拉框</label>
+                    <div class="col-sm-4">
+                        <dy-selector disabled></dy-selector>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="directive/tooltip/tooltip.js"></script>
@@ -53,23 +94,6 @@
         for (var i = 0; i < 20; i++) {
             result.push(
                 a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
                 + a[parseInt(Math.random() * 10)]
                 + a[parseInt(Math.random() * 10)]
                 + a[parseInt(Math.random() * 10)]
@@ -103,7 +127,7 @@
             $scope.list = getArray();
             $scope.list2 = getObjects();
             $scope.step = 0
-            $scope.stepList = ['第一步', '第二步', '第三步', '第四步', '第五步', '第六步']
+            $scope.stepList = ['第一步', '第二步', '第三步']
             $scope.next = function () {
                 $scope.step++
             }

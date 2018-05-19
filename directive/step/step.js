@@ -8,14 +8,18 @@ angular.module('directive.step', []).directive('dyStep', function () {
             stepList: '=',
             step: '@'
         },
-        template: `<ul class="dy-step">
-                    <li ng-repeat="item in stepList track by $index" ng-class="{active: $index + '' == step}"><span ng-bind="item"></span></li>
-                </ul>`,
-        link: function (scope, element, attr) {
-        },
+        template: "<ul class=\"dy-step\"><li ng-repeat=\"item in stepList track by $index\" ng-class=\"{active: isActive($index)}\"><span ng-bind=\"item\"></span></li></ul>",
+                // `
+                // <ul class="dy-step">
+                //     <li ng-repeat="item in stepList track by $index" ng-class="{active: isActive($index)}"><span ng-bind="item"></span></li>
+                // </ul>
+                // `,
         controller: function ($scope) {
-            if (!$scope.step || $scope.step.length > 0) {
-                $scope.step = '0'
+            $scope.isActive = function ($index) {
+                if (!$scope.step) {
+                    $scope.step = '0'
+                }
+                return parseInt($scope.step) >= $index;
             }
         }
     }
