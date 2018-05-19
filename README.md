@@ -10,7 +10,7 @@
 
 * ...
 
-预览地址：<a href="https://rilyzhang.github.io/angularjs-directive-dy" target="_blank">https://rilyzhang.github.io/angularjs-directive-dy</a>
+预览地址：[https://rilyzhang.github.io/angularjs-directive-dy](https://rilyzhang.github.io/angularjs-directive-dy)
 
 下面内容是详细文档。
 
