@@ -124,8 +124,13 @@
 
     angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step'])
         .controller('testSelector', function ($scope) {
-            $scope.list = getArray();
-            $scope.list2 = getObjects();
+            $scope.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
+            $scope.dyList2 = [
+                {key: '苹果', value: '001'},
+                {key: '三星', value: '002'},
+                {key: '华为', value: '003'},
+                {key: '小米', value: '004'}
+            ];
             $scope.step = 0
             $scope.stepList = ['第一步', '第二步', '第三步']
             $scope.next = function () {

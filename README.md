@@ -59,7 +59,7 @@ var app = angular.module('app', ['directive.tooltip']);
 <dy-selector ng-model="myData" dy-list="dataList"></dy-selector>
 ```
 
-*(注：传入的数组元素可以为string类型，也可以为object类型。如果传入object类型，则必须是{ key : xxx, value : xxx }格式）*
+*(注：传入的数组元素可以为`string`类型，也可以为object类型。如果传入`object`类型，则必须是{ key : xxx, value : xxx }格式）*
 
 **使用就是这么简单，接下来我们看看属性详解：**
 
@@ -69,6 +69,10 @@ var app = angular.module('app', ['directive.tooltip']);
 |dyList      | 传入一个数组，可以为string数组，也可以为object类型
 |disabled    | 只读模式
 |zIndex      | 当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先
+
+下面分别演示了传入字符串和传入数组：
+
+***Example:***
 
 ```javascript
 // 传入String类型的数组
@@ -109,3 +113,5 @@ $scope.dyList = [
 |stepList    | 步数数组
 
 *特别注意：此指令适用于白色背景的页面。如果页面背景是其它颜色，请在自己的样式文件中重写小箭头的颜色。*
+
+文档持续更新中ing...
