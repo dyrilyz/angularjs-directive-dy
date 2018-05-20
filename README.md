@@ -4,7 +4,7 @@
 
 * 更美观更强大的select下拉指令；
 
-* 简单便捷的step指令，只需要简单的几行代码，便可以实现复杂的视觉效果
+* 简单便捷的step指令，只需要简单的几行代码，便可以实现复杂的视觉效果；
 
 * 可收缩的pannel面板(TODO)
 
@@ -17,8 +17,7 @@
 > ## 目录
 > 1. [指令的引入](#import)
 > 2. [dy-selector指令](#selector)
-> 2. [dy-step指令](#step)
-> 
+> 3. [dy-step指令](#step)
 
 ## <a name="import">指令的引入</a>
 
