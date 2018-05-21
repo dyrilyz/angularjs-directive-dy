@@ -6,7 +6,7 @@
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-animate.min.js"></script>
     <link href="lib/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="directive/main.css">
+    <link rel="stylesheet" href="directive/style/main.css">
     <style type="text/css">
         .comment {
             font-size: 14px;
@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">字符串下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="a" dy-list="dyList" z-index="12"></dy-selector>
+                        <dy-selector ng-model="a" dy-list="dyList" z-index="13"></dy-selector>
                     </div>
                     <div class="col-xs-4" style="line-height: 34px;">
                         选择的值为：<span ng-bind="a"></span>
@@ -67,10 +67,19 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">对象下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="b" dy-list="dyList2" z-index="11"></dy-selector>
+                        <dy-selector ng-model="b" dy-list="dyList2" z-index="12"></dy-selector>
                     </div>
                     <div class="col-xs-4" style="line-height: 34px;">
                         选择的值为：<span ng-bind="b"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">简洁下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="a" dy-list="dyList" z-index="11" mode="simple"></dy-selector>
+                    </div>
+                    <div class="col-xs-4" style="line-height: 34px;">
+                        选择的值为：<span ng-bind="a"></span>
                     </div>
                 </div>
                 <div class="form-group">

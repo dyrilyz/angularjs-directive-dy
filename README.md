@@ -69,6 +69,7 @@ var app = angular.module('app', ['directive.tooltip']);
 |dyList      | 传入一个数组，可以为string数组，也可以为object类型
 |disabled    | 只读模式
 |zIndex      | 当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先
+|mode        | 当存在mode属性，并且值为simple时，可屏蔽匹配搜索框
 
 下面分别演示了传入字符串和传入数组：
 
@@ -115,3 +116,5 @@ $scope.dyList = [
 *特别注意：此指令适用于白色背景的页面。如果页面背景是其它颜色，请在自己的样式文件中重写小箭头的颜色。*
 
 文档持续更新中ing...
+
+如有疑问，请提Issues。
