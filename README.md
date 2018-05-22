@@ -96,7 +96,7 @@ var app = angular.module('app', ['directive.tooltip']);
 
 ``mode``：       当存在mode属性，并且值为simple时，可屏蔽匹配搜索框
 
-``objecHtandle``：  用于映射dyList对象的字段。当你的对象过于复杂时，你无需将对象转换为指定类型，
+``objectHandle``：  用于映射dyList对象的字段。当你的对象过于复杂时，你无需将对象转换为指定类型，
                     因为这个属性可以帮你做这些事情！
 
 下面分别演示了传入字符串和传入数组：
@@ -118,7 +118,7 @@ $scope.dyList = [
 ];
 ```
 
-如果你的对象是这个样子的，你又懒得做转换，那么，你只需要做好字段映射，objecHtandle属性可以帮你做这些工作：
+如果你的对象是这个样子的，你又懒得做转换，那么，你只需要做好字段映射，objectHandle属性可以帮你做这些工作：
 
 ***Example:***
 
