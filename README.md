@@ -18,6 +18,7 @@
 > 1. [指令的引入](#import)
 > 2. [dy-selector指令](#selector)
 > 3. [dy-step指令](#step)
+> 4. [dy-tooltip指令](#tooltip)
 
 ## <a name="import">指令的引入</a>
 
@@ -114,6 +115,30 @@ $scope.dyList = [
 |stepList    | 步数数组
 
 *特别注意：此指令适用于白色背景的页面。如果页面背景是其它颜色，请在自己的样式文件中重写小箭头的颜色。*
+
+## <a name="tooltip">dy-tooltip指令</a>
+
+>当我们鼠标挪到某个元素上，像提示用户的时候，通常会选中在该元素上加入title属性，但又苦于原生title属性的样式不太美观，
+这时候dy-tooltip属性或许可以帮到你。
+
+不多说，直接贴代码：
+
+```html
+<!-- 首先还是引入代码并加载指令 -->
+<script src="angularjs-directive-dy/directive/tooltip/tooltip.js"></script>
+<link rel="stylesheet" href="angularjs-directive-dy/directive/tooltip/tooltip.css">
+<script>
+    angular.module('app', ['directive.tooltip']);
+</script>
+```
+
+接着就可以直接使用了：
+
+***Example：***
+
+```html
+<div dy-tooltip data-tip="这里就是你想显示的提示文字">...</div>
+```
 
 文档持续更新中ing...
 
