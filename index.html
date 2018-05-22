@@ -44,28 +44,37 @@
             <div class="form-group">
                 <label class="control-label col-xs-2">字符串下拉框</label>
                 <div class="col-xs-4">
-                    <dy-selector ng-model="a" dy-list="dyList" z-index="13"></dy-selector>
+                    <dy-selector ng-model="a" dy-list="dyList" z-index="14"></dy-selector>
                 </div>
-                <div class="col-xs-4" style="line-height: 34px;">
+                <div class="col-xs-6" style="line-height: 34px;">
                     选择的值为：<span ng-bind="a"></span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">对象下拉框</label>
                 <div class="col-xs-4">
-                    <dy-selector ng-model="b" dy-list="dyList2" z-index="12"></dy-selector>
+                    <dy-selector ng-model="b" dy-list="dyList2" z-index="13"></dy-selector>
                 </div>
-                <div class="col-xs-4" style="line-height: 34px;">
+                <div class="col-xs-6" style="line-height: 34px;">
                     选择的值为：<span ng-bind="b"></span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">简洁下拉框</label>
                 <div class="col-xs-4">
-                    <dy-selector ng-model="a" dy-list="dyList" z-index="11" mode="simple"></dy-selector>
+                    <dy-selector ng-model="a" dy-list="dyList" z-index="12" mode="simple"></dy-selector>
                 </div>
-                <div class="col-xs-4" style="line-height: 34px;">
+                <div class="col-xs-6" style="line-height: 34px;">
                     选择的值为：<span ng-bind="a"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2">简洁下拉框</label>
+                <div class="col-xs-4">
+                    <dy-selector ng-model="c" dy-list="dyList3" z-index="11" object-handle="{dyKey: 'brand', dyVal: 'encoding'}"></dy-selector>
+                </div>
+                <div class="col-xs-6" style="line-height: 34px;">
+                    选择的值为：<span ng-bind="c"></span>
                 </div>
             </div>
             <div class="form-group">
@@ -88,11 +97,18 @@
         .controller('testSelector', function ($scope) {
             $scope.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
             $scope.dyList2 = [
-                {key: '苹果', value: '001'},
-                {key: '三星', value: '002'},
-                {key: '华为', value: '003'},
-                {key: '小米', value: '004'},
-                {key: '锤子', value: '005'}
+                {dyKey: '苹果', dyVal: '001'},
+                {dyKey: '三星', dyVal: '002'},
+                {dyKey: '华为', dyVal: '003'},
+                {dyKey: '小米', dyVal: '004'},
+                {dyKey: '锤子', dyVal: '005'}
+            ];
+            $scope.dyList3 = [
+                {brand: '苹果', encoding: '001'},
+                {brand: '三星', encoding: '002'},
+                {brand: '华为', encoding: '003'},
+                {brand: '小米', encoding: '004'},
+                {brand: '锤子', encoding: '005'}
             ];
             $scope.step = 0
             $scope.stepList = ['第一步', '第二步', '第三步']

@@ -60,17 +60,22 @@ var app = angular.module('app', ['directive.tooltip']);
 <dy-selector ng-model="myData" dy-list="dataList"></dy-selector>
 ```
 
-*(注：传入的数组元素可以为`string`类型，也可以为object类型。如果传入`object`类型，则必须是{ key : xxx, value : xxx }格式）*
+*(注：传入的数组元素可以为`string`类型，也可以为object类型。如果传入`object`类型，则必须是{ dyKey : xxx, dyVal : xxx }格式）*
 
 **使用就是这么简单，接下来我们看看属性详解：**
 
-|Attr        | comment
-|:----------:|---------
-|ngModel     | 这个大家都懂的，不做解释
-|dyList      | 传入一个数组，可以为string数组，也可以为object类型
-|disabled    | 只读模式
-|zIndex      | 当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先
-|mode        | 当存在mode属性，并且值为simple时，可屏蔽匹配搜索框
+``ngModel``：    这个大家都懂的，不做解释。
+
+``dyList``：     传入一个数组，可以为string数组，也可以为object类型。
+
+``disabled``：   只读模式，加上这个属性（无需赋值）后将无法操作下拉框。
+
+``zIndex``：     当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先。
+
+``mode``：       当存在mode属性，并且值为simple时，可屏蔽匹配搜索框
+
+``objecHtandle``：  用于映射dyList对象的字段。当你的对象过于复杂时，你无需将对象转换为指定类型，
+                    因为这个属性可以帮你做这些事情！
 
 下面分别演示了传入字符串和传入数组：
 
@@ -84,12 +89,31 @@ $scope.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
 ```javascript
 // 传入Object类型的数组
 $scope.dyList = [
-    {key: '苹果', value: '001'},
-    {key: '三星', value: '002'},
-    {key: '华为', value: '003'},
-    {key: '小米', value: '004'}
+    {dyKey: '苹果', dyVal: '001'},
+    {dyKey: '三星', dyVal: '002'},
+    {dyKey: '华为', dyVal: '003'},
+    {dyKey: '小米', dyVal: '004'}
 ];
 ```
+
+如果你的对象是这个样子的，你又懒得做转换，那么，你只需要做好字段映射，objecHtandle属性可以帮你做这些工作：
+
+***Example:***
+
+```javascript
+$scope.dyList3 = [
+    {brand: '苹果', encoding: '001'},
+    {brand: '三星', encoding: '002'},
+    {brand: '华为', encoding: '003'},
+    {brand: '小米', encoding: '004'},
+    {brand: '锤子', encoding: '005'}
+];
+```
+
+```html
+<dy-selector ng-model="myData" dy-list="dyList3" object-handle="{dyKey: 'brand', dyVal: 'encoding'}"></dy-selector>
+```
+
 
 ## <a name="step">dy-step指令</a>
 
@@ -109,10 +133,9 @@ $scope.dyList = [
 
 **属性详解：**
 
-|Attr        | comment
-|:----------:|---------
-|step        | 当前所在的步数
-|stepList    | 步数数组
+``step``：    当前所在的步数。
+
+``stepList``：    步数数组。
 
 *特别注意：此指令适用于白色背景的页面。如果页面背景是其它颜色，请在自己的样式文件中重写小箭头的颜色。*
 
