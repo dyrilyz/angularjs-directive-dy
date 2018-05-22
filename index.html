@@ -87,13 +87,10 @@
     </dy-panel>
 
 </div>
-<script src="directive/tooltip/tooltip.js"></script>
-<script src="directive/selector/selector.js"></script>
-<script src="directive/step/step.js"></script>
-<script src="directive/panel/panel.js"></script>
+<script src="directive/angularjs-directive-dy.min.js"></script>
 <script>
 
-    angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step', 'directive.panel'])
+    angular.module('test', ['directive.dy'])
         .controller('testSelector', function ($scope) {
             $scope.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
             $scope.dyList2 = [
