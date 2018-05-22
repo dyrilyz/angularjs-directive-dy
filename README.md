@@ -26,16 +26,37 @@
 
 ***Example：***
 ```html
-<!--引入指令js文件-->
-<script src="angularjs-directive-dy/directive/***/***.js"></script>
-<!--引入指令样式文件-->
-<link rel="stylesheet" href="angularjs-directive-dy/directive/***/***.css">
+<!-- 引入字体样式 -->
+<link rel="stylesheet" href="angularjs-directive-dy/directive/style/dyFont.css">
+<!-- 引入面板样式 -->
+<link rel="stylesheet" href="angularjs-directive-dy/directive/panel/panel.css">
+<!-- 引入面板指令js -->
+<script src="angularjs-directive-dy/directive/panel/panel.min.js"></script>
+```
+
+```javascript
+// 注入面板指令
+var app = angular.module('myApp', ['directive.panel']);
+```
+
+当然，这是为只需要使用单一某个指令的人准备的。如果你不在乎js体积，可以直接引入整合后的js及css：
+
+***Example：***
+```html
+<link rel="stylesheet" href="angularjs-directive-dy/directive/style/main.css">
+<script src="angularjs-directive-dy/directive/angularjs-directive-dy.min.js"></script>
+```
+
+```javascript
+// 注入全部指令
+var app = angular.module('myApp', ['directive.dy'])
 ```
 
 ## <a name="selector">dy-selector指令</a>
 
 >dy-selector指令是一个模拟select下拉框的指令，但是它比select下拉框更加强大和美观。
-当你的选项有很多时，它可以进行模糊匹配，让可选项变少。此外，它还支持字符串数组，对象数组。
+当你的选项有很多时，它可以进行模糊匹配，让可选项变少。此外，它还支持字符串数组，对象数组。<br/>
+**另外请注意：这个指令需要字体样式（dyFont.css）支持，如果未引入字体样式，可能导致下拉图标和放大镜图标的丢失！**
 
 首先要做的时将其引入到你的html文件中：
 
@@ -43,6 +64,7 @@
 ```html
 <script src="angularjs-directive-dy/directive/selector/selector.js"></script>
 <link rel="stylesheet" href="angularjs-directive-dy/directive/selector/selector.css">
+<link rel="stylesheet" href="angularjs-directive-dy/directive/style/dyFont.css">
 ```
 
 然后将其注入到你的angular应用中：
