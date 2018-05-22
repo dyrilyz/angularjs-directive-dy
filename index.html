@@ -22,116 +22,69 @@
 <div ng-app="test" ng-controller="testSelector" class="container">
 
     <!--dy-tooltip 指令事例-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-tooltip 指令</h3>
-        </div>
-        <div class="panel-body">
-            <ul>
-                <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
-            </ul>
-        </div>
-    </div>
+    <dy-panel panel-title="dy-tooltip 指令" theme="primary">
+        <ul>
+            <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
+            <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
+        </ul>
+    </dy-panel>
 
     <!--dy-step 指令-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-step 指令</h3>
-        </div>
-        <div class="panel-body">
-            <dy-step step-list="stepList" step="1"></dy-step>
-        </div>
-    </div>
+    <dy-panel panel-title="dy-step 指令" theme="primary">
+        <dy-step step-list="stepList" step="1"></dy-step>
+    </dy-panel>
 
     <!--dy-selector 指令-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-selector 指令</h3>
-        </div>
-        <div class="panel-body">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label class="control-label col-xs-2">字符串下拉框</label>
-                    <div class="col-xs-4">
-                        <dy-selector ng-model="a" dy-list="dyList" z-index="13"></dy-selector>
-                    </div>
-                    <div class="col-xs-4" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="a"></span>
-                    </div>
+    <dy-panel panel-title="dy-selector 指令" theme="primary">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-xs-2">字符串下拉框</label>
+                <div class="col-xs-4">
+                    <dy-selector ng-model="a" dy-list="dyList" z-index="13"></dy-selector>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-2">对象下拉框</label>
-                    <div class="col-xs-4">
-                        <dy-selector ng-model="b" dy-list="dyList2" z-index="12"></dy-selector>
-                    </div>
-                    <div class="col-xs-4" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="b"></span>
-                    </div>
+                <div class="col-xs-4" style="line-height: 34px;">
+                    选择的值为：<span ng-bind="a"></span>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-2">简洁下拉框</label>
-                    <div class="col-xs-4">
-                        <dy-selector ng-model="a" dy-list="dyList" z-index="11" mode="simple"></dy-selector>
-                    </div>
-                    <div class="col-xs-4" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="a"></span>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2">对象下拉框</label>
+                <div class="col-xs-4">
+                    <dy-selector ng-model="b" dy-list="dyList2" z-index="12"></dy-selector>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-2">禁用下拉框</label>
-                    <div class="col-xs-4">
-                        <dy-selector disabled></dy-selector>
-                    </div>
+                <div class="col-xs-4" style="line-height: 34px;">
+                    选择的值为：<span ng-bind="b"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2">简洁下拉框</label>
+                <div class="col-xs-4">
+                    <dy-selector ng-model="a" dy-list="dyList" z-index="11" mode="simple"></dy-selector>
+                </div>
+                <div class="col-xs-4" style="line-height: 34px;">
+                    选择的值为：<span ng-bind="a"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2">禁用下拉框</label>
+                <div class="col-xs-4">
+                    <dy-selector disabled></dy-selector>
                 </div>
             </div>
         </div>
-    </div>
+    </dy-panel>
+
 </div>
 <script src="directive/tooltip/tooltip.js"></script>
 <script src="directive/selector/selector.js"></script>
 <script src="directive/step/step.js"></script>
+<script src="directive/panel/panel.js"></script>
 <script>
-    // 随机为查询列表添加一组数据
-    function getArray() {
-        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        var result = []
-        for (var i = 0; i < 20; i++) {
-            result.push(
-                a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-            )
-        }
-        return result
-    }
 
-    // 随机为查询列表添加一组对象
-    function getObjects() {
-        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        var b = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        var result = []
-        for (var i = 0; i < 20; i++) {
-            result.push({
-                key: b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)],
-                value: a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)]
-            })
-        }
-        return result
-    }
-
-    angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step'])
+    angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step', 'directive.panel'])
         .controller('testSelector', function ($scope) {
             $scope.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
             $scope.dyList2 = [
