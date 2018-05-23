@@ -24,7 +24,7 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
             objectHandle: '='
         },
         template:
-            "<div class=\"dy-selector\"><div class=\"dy-selector-value\" ng-class=\"{'dy-selector-able':selectorAble}\" ng-click=\"showList()\"><span ng-if=\"ngModel.dyKey\" ng-bind=\"ngModel.dyKey\"></span><span ng-if=\"!ngModel.dyKey\" ng-bind=\"ngModel\"></span></div><span class=\"df df-down\" ng-class=\"{'rotate-up':isShowList}\"></span><div class=\"dy-selector-list\" ng-show=\"selectorAble && isShowList\"><div ng-hide=\"mode == 'simple'\"><input type=\"text\" ng-model=\"keyWord\"/><span class=\"df df-search-bold\"></span></div><ul><li ng-repeat=\"item in dyList track by $index\" ng-click=\"setItem(item)\" ng-show=\"itemShow(item)\"><span ng-if=\"item.dyKey\" ng-bind=\"item.dyKey\"></span><span ng-if=\"!item.dyKey\" ng-bind=\"item\"></span></li></ul></div></div>",
+           "<div class=\"dy-selector\"><div class=\"dy-selector-value\" ng-class=\"{'dy-selector-able':selectorAble}\" ng-click=\"showList()\"><span ng-if=\"ngModel.dyKey\" ng-bind=\"ngModel.dyKey\"></span><span ng-if=\"!ngModel.dyKey\" ng-bind=\"ngModel\"></span></div><span class=\"df df-down\" ng-class=\"{'rotate-up': selectorAble && isShowList}\"></span><div class=\"dy-selector-list\" ng-show=\"selectorAble && isShowList\"><div ng-hide=\"mode == 'simple'\"><input type=\"text\" ng-model=\"keyWord\"/><span class=\"df df-search-bold\"></span></div><ul><li ng-repeat=\"item in dyList track by $index\" ng-click=\"setItem(item)\" ng-show=\"itemShow(item)\"><span ng-if=\"item.dyKey\" ng-bind=\"item.dyKey\"></span><span ng-if=\"!item.dyKey\" ng-bind=\"item\"></span></li></ul></div></div>",
         // 开发模式dom如下
         //     `
         // <div class="dy-selector">
@@ -32,7 +32,7 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
         //         <span ng-if="ngModel.dyKey" ng-bind="ngModel.dyKey"></span>
         //         <span ng-if="!ngModel.dyKey" ng-bind="ngModel"></span>
         //     </div>
-        //     <span class="df df-down" ng-class="{'rotate-up':isShowList}"></span>
+        //     <span class="df df-down" ng-class="{'rotate-up': selectorAble && isShowList}"></span>
         //     <div class="dy-selector-list" ng-show="selectorAble && isShowList">
         //         <div ng-hide="mode == 'simple'">
         //             <input type="text" ng-model="keyWord"/>
