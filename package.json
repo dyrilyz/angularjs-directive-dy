@@ -1,0 +1,24 @@
+{
+  "name": "angularjs-directive-dy",
+  "version": "1.0.0",
+  "description": "这是一个angularjs指令库，基于angularjs 1.x。这个库提供了一些我们常用的组件，例如：",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RilyZhang/angularjs-directive-dy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RilyZhang/angularjs-directive-dy/issues"
+  },
+  "homepage": "https://github.com/RilyZhang/angularjs-directive-dy#readme"
+}
