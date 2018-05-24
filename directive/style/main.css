@@ -140,6 +140,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-bottom: 20px;
 }
 .dy-step * {
   -webkit-box-sizing: border-box;
@@ -184,14 +185,14 @@
   top: 0;
 }
 .dy-step li:first-child.active:before {
-  border-left-color: #5bb4ff;
+  border-left-color: #337ab7;
 }
 .dy-step li.active {
   color: #fff;
-  background-color: #5bb4ff;
+  background-color: #337ab7;
 }
 .dy-step li.active:after {
-  border-left-color: #5bb4ff;
+  border-left-color: #337ab7;
 }
 .dy-tooltip {
   position: absolute;
@@ -249,3 +250,4 @@
   background-color: #337ab7;
   color: #fff;
 }
+/*# sourceMappingURL=main.css.map */
