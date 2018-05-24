@@ -1,0 +1,7 @@
+.dy-tree ul {
+  list-style: none;
+}
+.dy-tree .df.df-folder {
+  color: #f7ce52;
+  font-size: 20px;
+}
