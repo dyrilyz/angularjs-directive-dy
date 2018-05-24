@@ -2,11 +2,12 @@ angular.module('test', [
     'directive.panel',
     'directive.selector',
     'directive.step',
-    'directive.tooltip'
+    'directive.tooltip',
+    'directive.tree'
 ])
-    .controller('tooltipCtrl', function ($scope) {
+    .controller('tooltipCtrl', function () {
     })
-    .controller('stepCtrl', function ($scope) {
+    .controller('stepCtrl', function () {
         var $ctrl = this
         $ctrl.step = 0
         $ctrl.stepList = ['第一步', '第二步', '第三步']
@@ -17,7 +18,7 @@ angular.module('test', [
             }
         }
     })
-    .controller('selectorCtrl', function ($scope) {
+    .controller('selectorCtrl', function () {
         var $ctrl = this
         $ctrl.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
 
@@ -41,4 +42,19 @@ angular.module('test', [
             $ctrl.b = ''
             $ctrl.c = ''
         }
+    })
+    .controller('treeCtrl', function () {
+        var $ctrl = this
+        $ctrl.dataList = [
+            {id: 1, name: '新建文件夹1', type: 1, parentId: 0},
+            {id: 2, name: '新建文件夹2', type: 1, parentId: 0},
+            {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
+            {id: 4, name: '新建文件夹4', type: 2, parentId: 1},
+            {id: 5, name: '新建文件夹5', type: 2, parentId: 2},
+            {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
+            {id: 7, name: '新建文件夹7', type: 2, parentId: 2},
+            {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
+            {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
+            {id: 10, name: '新建文件夹10', type: 2, parentId: 5}
+        ]
     })

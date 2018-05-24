@@ -39,19 +39,6 @@
 var app = angular.module('myApp', ['directive.panel']);
 ```
 
-当然，这是为只需要使用单一某个指令的人准备的。如果你不在乎js体积，可以直接引入整合后的js及css：
-
-***Example：***
-```html
-<link rel="stylesheet" href="angularjs-directive-dy/directive/style/main.css">
-<script src="angularjs-directive-dy/directive/angularjs-directive-dy.min.js"></script>
-```
-
-```javascript
-// 注入全部指令
-var app = angular.module('myApp', ['directive.dy'])
-```
-
 ## <a name="selector">dy-selector指令</a>
 
 >dy-selector指令是一个模拟select下拉框的指令，但是它比select下拉框更加强大和美观。
@@ -185,6 +172,6 @@ $scope.dyList3 = [
 <div dy-tooltip data-tip="这里就是你想显示的提示文字">...</div>
 ```
 
-文档持续更新中ing...
+持续更新中ing...
 
 如有疑问，请提Issues。

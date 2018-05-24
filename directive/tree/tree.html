@@ -1,0 +1,9 @@
+<div class="dy-tree">
+    <ul>
+        <li ng-repeat="i in rootItem">
+            <span class="df df-folder"></span>
+            <span ng-bind="i.name"></span>
+            <div dy-tree-level root-point="i" children-data="treeData"></div>
+        </li>
+    </ul>
+</div>

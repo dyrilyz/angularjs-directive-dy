@@ -95,15 +95,17 @@
             </div>
         </dy-panel>
     </div>
-
-    <dy-panel panel-title="test">
-        <span class="df df-folder" style="color: #f7ce52; font-size: 20px;"></span>
-    </dy-panel>
+    <div ng-controller="treeCtrl as $ctrl">
+        <dy-panel panel-title="test" theme="primary">
+            <dy-tree tree-data="$ctrl.dataList"></dy-tree>
+        </dy-panel>
+    </div>
 </div>
 <script src="directive/panel/panel.js"></script>
 <script src="directive/selector/selector.js"></script>
 <script src="directive/step/step.js"></script>
 <script src="directive/tooltip/tooltip.js"></script>
+<script src="directive/tree/tree.js"></script>
 <script src="./index.js"></script>
 </body>
 </html>

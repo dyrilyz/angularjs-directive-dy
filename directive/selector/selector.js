@@ -9,11 +9,7 @@
  *
  * @author rily
  *
- * >带检索查询
- * >可以使用disabled禁用selector
  *
- */
-/**
  *                             _ooOoo_
  *                            o8888888o
  *                            88" . "88
@@ -54,31 +50,9 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
             mode: '@',
             objectHandle: '='
         },
-        template:
-           "<div class=\"dy-selector\"><div class=\"dy-selector-value\" ng-class=\"{'dy-selector-able':selectorAble}\" ng-click=\"showList()\"><span ng-if=\"ngModel.dyKey\" ng-bind=\"ngModel.dyKey\"></span><span ng-if=\"!ngModel.dyKey\" ng-bind=\"ngModel\"></span></div><span class=\"df df-down\" ng-class=\"{'rotate-up': selectorAble && isShowList}\"></span><div class=\"dy-selector-list\" ng-show=\"selectorAble && isShowList\"><div ng-hide=\"mode == 'simple'\"><input type=\"text\" ng-model=\"keyWord\"/><span class=\"df df-search-bold\"></span></div><ul><li ng-repeat=\"item in dyList track by $index\" ng-click=\"setItem(item)\" ng-show=\"itemShow(item)\"><span ng-if=\"item.dyKey\" ng-bind=\"item.dyKey\"></span><span ng-if=\"!item.dyKey\" ng-bind=\"item\"></span></li></ul></div></div>",
-        // 开发模式dom如下
-        //     `
-        // <div class="dy-selector">
-        //     <div class="dy-selector-value" ng-class="{'dy-selector-able':selectorAble}" ng-click="showList()">
-        //         <span ng-if="ngModel.dyKey" ng-bind="ngModel.dyKey"></span>
-        //         <span ng-if="!ngModel.dyKey" ng-bind="ngModel"></span>
-        //     </div>
-        //     <span class="df df-down" ng-class="{'rotate-up': selectorAble && isShowList}"></span>
-        //     <div class="dy-selector-list" ng-show="selectorAble && isShowList">
-        //         <div ng-hide="mode == 'simple'">
-        //             <input type="text" ng-model="keyWord"/>
-        //             <span class="df df-search-bold"></span>
-        //         </div>
-        //         <ul>
-        //             <li ng-repeat="item in dyList track by $index" ng-click="setItem(item)" ng-show="itemShow(item)">
-        //                 <span ng-if="item.dyKey" ng-bind="item.dyKey"></span>
-        //                 <span ng-if="!item.dyKey" ng-bind="item"></span>
-        //             </li>
-        //         </ul>
-        //     </div>
-        // </div>`,
+        templateUrl: 'directive/selector/selector.html',
         link: function ($scope, $element, $attr) {
-            if(!$scope.objectHandle) {
+            if (!$scope.objectHandle) {
                 // 检测传入列表对象类型
                 if ($scope.dyList && $scope.dyList.length > 0) {
                     if (typeof $scope.dyList[0] == 'object') {
