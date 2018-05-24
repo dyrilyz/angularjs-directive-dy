@@ -7,9 +7,9 @@ angular.module('directive.tree', [])
             scope: {
                 treeData: '='
             },
+            controllerAs: '$ctrl',
             link: function ($scope) {
                 $scope.rootItem = []
-                var rootIndex = []
                 for (var i in $scope.treeData) {
                     var flag = false
                     for (var j in $scope.treeData) {
@@ -21,12 +21,8 @@ angular.module('directive.tree', [])
                         }
                     }
                     if (flag) {
-                        rootIndex.push(i)
                         $scope.rootItem.push($scope.treeData[i])
                     }
-                }
-                for (var i = rootIndex.length - 1; i >= 0; i --) {
-                    $scope.treeData.splice(rootIndex[i], 1)
                 }
             }
         };
@@ -42,8 +38,10 @@ angular.module('directive.tree', [])
             template: `
                     <ul>
                         <li ng-repeat="i in points">
-                            <span class="df df-folder"></span>
-                            <span ng-bind="i.name"></span>
+                            <div>
+                                <span class="df df-folder"></span>
+                                <span ng-bind="i.name"></span>
+                            </div>
                             <div dy-tree-level root-point="i" children-data="childrenData"></div>
                         </li>
                     </ul>
@@ -58,9 +56,9 @@ angular.module('directive.tree', [])
                         $scope.points.push($scope.childrenData[i])
                     }
                 }
-                for (var i = rootIndex.length - 1; i >= 0; i --) {
-                    $scope.childrenData.splice(rootIndex[i], 1)
-                }
+                // for (var i = rootIndex.length - 1; i >= 0; i --) {
+                //     $scope.childrenData.splice(rootIndex[i], 1)
+                // }
             }
         }
     })

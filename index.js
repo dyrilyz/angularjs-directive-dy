@@ -57,4 +57,8 @@ angular.module('test', [
             {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
             {id: 10, name: '新建文件夹10', type: 2, parentId: 5}
         ]
+        $ctrl.addMenu = function () {
+            console.log('addMenu')
+            $ctrl.dataList.push({id: 11, name: '新建文件夹11', type: 2, parentId: 5})
+        }
     })
