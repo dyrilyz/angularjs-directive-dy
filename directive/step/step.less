@@ -1,7 +1,8 @@
 @import "../style/directive.common.less";
 
 @mainColor: #337ab7;
-@stepBg: #e7e7e7;
+@stepBg: #efefef;
+@stepDeg: 30px;
 
 .dy-step {
   .clearUl();
@@ -22,11 +23,22 @@
     line-height: 36px;
     position: relative;
 
+    .loop(@num1, @num2) when (@num2 > 0) {
+
+      .loop (@num1 + 1, @num2 - 1);
+
+      &:nth-child(@{num2}) {
+        z-index: @num1;
+      }
+    }
+
+    .loop (1, 10);
+
     & + li {
-      margin-left: 20px;
+      margin-left: 10px;
 
       &:before {
-        border-left: 20px solid #fff;
+        border-left: @stepDeg solid #fff;
       }
 
       &:last-child {
@@ -39,7 +51,7 @@
     .triangle (@left) {
       content: '';
       display: block;
-      border-left: 20px solid @stepBg;
+      border-left: @stepDeg solid @stepBg;
       border-top: 18px solid transparent;
       border-bottom: 18px solid transparent;
       position: absolute;
