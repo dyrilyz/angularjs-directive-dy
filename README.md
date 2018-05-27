@@ -19,6 +19,7 @@
 > 2. [dy-selector指令](#selector)
 > 3. [dy-step指令](#step)
 > 4. [dy-tooltip指令](#tooltip)
+> 5. [dy-uploader指令](#uploader)
 
 ## <a name="import">指令的引入</a>
 
@@ -179,6 +180,33 @@ $scope.dyList3 = [
 
 ```html
 <div dy-tooltip data-tip="这里就是你想显示的提示文字">...</div>
+```
+
+## <a name="uploader">dy-uploader 指令</a>
+
+>这是一个封装的上传组件，可预览，可删除。
+
+**属性详解：**
+
+``ngModel``： 用于绑定file类型的数组。
+
+``maxLength``：上传最大数量。
+
+``accept``： 上传图片类型。
+
+``maxLengthError``： 当超过限制是调用此方法。
+
+``repeatNameError``： 当上传重名是调用此方法。
+
+***Example：***
+```html
+<dy-uploader
+        ng-model="$ctrl.files"
+        max-length="3"
+        accept="image/*"
+        max-length-error="$ctrl.maxError()"
+        repeat-name-error="$ctrl.repeatNameError()">
+</dy-uploader>
 ```
 
 持续更新中ing...

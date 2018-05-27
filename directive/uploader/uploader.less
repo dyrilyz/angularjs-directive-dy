@@ -28,6 +28,29 @@
             height: @iconSize;
             line-height: @iconSize;
             text-align: center;
+            position: relative;
+
+            &:before {
+                content: '';
+                display: block;
+                border-top: 1px solid @iconColor;
+                width: 80px;
+                height: 0;
+                position: absolute;
+                left: 20px;
+                top: 59px;
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                border-left: 1px solid @iconColor;
+                width: 0;
+                height: 80px;
+                position: absolute;
+                left: 59px;
+                top: 20px;
+            }
         }
     }
 

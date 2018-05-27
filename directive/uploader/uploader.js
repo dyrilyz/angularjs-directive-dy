@@ -26,8 +26,7 @@ angular.module('directive.uploader', [])
                             '<input type="file" dy-uploader-input multiple="multiple" accept="{{accept}}" ng-model="ngModelTemp"/>'
                         )($scope))
                         // 判断图片数量是否超标
-                        if ($scope.ngModel.length <= $scope.maxLength) {
-                            console.log($scope.ngModel, $scope.ngModelTemp)
+                        if (($scope.ngModelTemp.length + $scope.ngModel.length) <= $scope.maxLength) {
                             // TODO 判断是否重名
                             for (var i in $scope.ngModel) {
                                 for (var j in $scope.ngModelTemp) {
@@ -43,10 +42,10 @@ angular.module('directive.uploader', [])
                                 var reader = new FileReader()
                                 reader.readAsDataURL(item)
                                 reader.onload = function (event) {
+                                    $scope.ngModel.push(item)
                                     $scope.pictureList.push(event.target.result)
                                     $scope.$apply()
                                 }
-                                $scope.ngModel.push(item)
                             })
                         } else {
                             $scope.maxLengthError()

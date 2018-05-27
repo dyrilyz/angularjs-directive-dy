@@ -1,0 +1,80 @@
+.dy-uploader .add-icon {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin-bottom: 20px;
+}
+.dy-uploader .add-icon input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+}
+.dy-uploader .add-icon .df-add-light {
+  display: block;
+  font-size: 60px;
+  font-weight: lighter;
+  border: 1px dashed #c0c0c0;
+  color: #c0c0c0;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  position: relative;
+}
+.dy-uploader .add-icon .df-add-light:before {
+  content: '';
+  display: block;
+  border-top: 1px solid #c0c0c0;
+  width: 80px;
+  height: 0;
+  position: absolute;
+  left: 20px;
+  top: 59px;
+}
+.dy-uploader .add-icon .df-add-light:after {
+  content: '';
+  display: block;
+  border-left: 1px solid #c0c0c0;
+  width: 0;
+  height: 80px;
+  position: absolute;
+  left: 59px;
+  top: 20px;
+}
+.dy-uploader .dy-pic-preview {
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.dy-uploader .dy-pic-preview img {
+  width: 120px;
+  height: 120px;
+}
+.dy-uploader .dy-pic-preview .dy-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #000;
+  color: #fff;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  display: none;
+}
+.dy-uploader .dy-pic-preview:hover .dy-delete {
+  display: block;
+}
+.dy-uploader:after {
+  content: '';
+  display: table;
+  clear: both;
+  width: 0;
+  height: 0;
+}
