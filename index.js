@@ -3,7 +3,8 @@ angular.module('test', [
     'directive.selector',
     'directive.step',
     'directive.tooltip',
-    'directive.tree'
+    'directive.tree',
+    'directive.uploader'
 ])
     .controller('tooltipCtrl', function () {
     })
@@ -18,7 +19,7 @@ angular.module('test', [
             }
         }
     })
-    .controller('selectorCtrl', function () {
+    .controller('selectorCtrl', function ($timeout, $log) {
         var $ctrl = this
         $ctrl.dyList = ['IOS', 'Android', 'windows phone', 'Symbian OS'];
 
@@ -36,11 +37,20 @@ angular.module('test', [
             {brand: '小米', encoding: '004'},
             {brand: '锤子', encoding: '005'}
         ];
+        $ctrl.dyList4 = [];
+        $timeout(function() {
+            $ctrl.dyList4.push({brand: '苹果', encoding: '001'})
+            $ctrl.dyList4.push({brand: '三星', encoding: '002'})
+            $ctrl.dyList4.push({brand: '华为', encoding: '003'})
+            $ctrl.dyList4.push({brand: '小米', encoding: '004'})
+            $ctrl.dyList4.push({brand: '锤子', encoding: '005'})
+        },3000)
 
         $ctrl.selectReset = function () {
             $ctrl.a = ''
             $ctrl.b = ''
             $ctrl.c = ''
+            $ctrl.d = ''
         }
     })
     .controller('treeCtrl', function () {
@@ -60,5 +70,17 @@ angular.module('test', [
         $ctrl.addMenu = function () {
             console.log('addMenu')
             $ctrl.dataList.push({id: 11, name: '新建文件夹11', type: 2, parentId: 5})
+        }
+    })
+    .controller('uploaderCtrl', function () {
+        var $ctrl = this
+        $ctrl.showFiles = function () {
+            console.log($ctrl.files)
+        }
+        $ctrl.maxError = function () {
+            console.log('不能超过三张，请重新选择')
+        }
+        $ctrl.repeatNameError = function () {
+            console.log('文件名不能重复')
         }
     })

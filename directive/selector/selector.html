@@ -1,5 +1,6 @@
 <div class="dy-selector">
     <div class="dy-selector-value" ng-class="{'dy-selector-able':selectorAble}" ng-click="showList()">
+        <span ng-if="!ngModel" ng-bind="placeholder" class="dy-placeholder"></span>
         <span ng-if="ngModel.dyKey" ng-bind="ngModel.dyKey"></span>
         <span ng-if="!ngModel.dyKey" ng-bind="ngModel"></span>
     </div>

@@ -48,7 +48,8 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
             ngModel: '=',
             dyList: '=',
             mode: '@',
-            objectHandle: '='
+            objectHandle: '=',
+            placeholder: '@'
         },
         templateUrl: 'directive/selector/selector.html',
         link: function ($scope, $element, $attr) {
@@ -62,11 +63,17 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
                     }
                 }
             } else {
+                refreshList()
+                $scope.$watch('dyList', function () {
+                    refreshList()
+                }, true)
+            }
+
+            function refreshList() {
                 for (var i in $scope.dyList) {
                     $scope.dyList[i].dyKey = $scope.dyList[i][$scope.objectHandle.dyKey]
                     $scope.dyList[i].dyVal = $scope.dyList[i][$scope.objectHandle.dyVal]
                 }
-
             }
             // 检测层高传入
             if ($attr.zIndex && $attr.zIndex.length > 0) {

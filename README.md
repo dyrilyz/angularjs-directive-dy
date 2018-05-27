@@ -73,15 +73,17 @@ var app = angular.module('app', ['directive.tooltip']);
 
 **使用就是这么简单，接下来我们看看属性详解：**
 
-``ngModel``：    这个大家都懂的，不做解释。
+``ngModel``：       这个大家都懂的，不做解释。
 
-``dyList``：     传入一个数组，可以为string数组，也可以为object类型。
+``dyList``：        传入一个数组，可以为string数组，也可以为object类型。
 
-``disabled``：   只读模式，加上这个属性（无需赋值）后将无法操作下拉框。
+``disabled``：      只读模式，加上这个属性（无需赋值）后将无法操作下拉框。
 
-``zIndex``：     当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先。
+``zIndex``：        当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先。
 
-``mode``：       当存在mode属性，并且值为simple时，可屏蔽匹配搜索框
+``mode``：          当存在mode属性，并且值为simple时，可屏蔽匹配搜索框。
+
+``placeholder``：   尚未选择列表时的提示文字。
 
 ``objectHandle``：  用于映射dyList对象的字段。当你的对象过于复杂时，你无需将对象转换为指定类型，
                     因为这个属性可以帮你做这些事情！
@@ -120,9 +122,16 @@ $scope.dyList3 = [
 ```
 
 ```html
-<dy-selector ng-model="myData" dy-list="dyList3" object-handle="{dyKey: 'brand', dyVal: 'encoding'}"></dy-selector>
+<dy-selector
+   ng-model="myData"
+   dy-list="dyList3"
+   placeholder="请选择"
+   object-handle="{dyKey: 'brand', dyVal: 'encoding'}">
+</dy-selector>
 ```
 
+*最后再提示一点：当启用* ``object-handle`` *的时候，为了监视数组发生的变化，启用了脏检查机制，性能方面将会有所影响，
+请优先考虑默认使用指令要求的对象格式*
 
 ## <a name="step">dy-step指令</a>
 

@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>angularjs-directive-dy示例</title>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-animate.min.js"></script>
@@ -46,7 +49,8 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">字符串下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="14"></dy-selector>
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="14"
+                                     placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
                         选择的值为：<span ng-bind="$ctrl.a"></span>
@@ -55,7 +59,8 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">对象下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.b" dy-list="$ctrl.dyList2" z-index="13"></dy-selector>
+                        <dy-selector ng-model="$ctrl.b" dy-list="$ctrl.dyList2" z-index="13"
+                                     placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
                         选择的值为：<span ng-bind="$ctrl.b"></span>
@@ -64,7 +69,8 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">简洁下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="12" mode="simple"></dy-selector>
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="12" mode="simple"
+                                     placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
                         选择的值为：<span ng-bind="$ctrl.a"></span>
@@ -74,16 +80,28 @@
                     <label class="control-label col-xs-2">映射下拉框</label>
                     <div class="col-xs-4">
                         <dy-selector ng-model="$ctrl.c" dy-list="$ctrl.dyList3" z-index="11"
-                                     object-handle="{dyKey: 'brand', dyVal: 'encoding'}"></dy-selector>
+                                     object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
+                                     placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
                         选择的值为：<span ng-bind="$ctrl.c"></span>
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-xs-2">延时（异步）下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.d" dy-list="$ctrl.dyList4" z-index="10"
+                                     object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
+                                     placeholder="请选择"></dy-selector>
+                    </div>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：<span ng-bind="$ctrl.d"></span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-xs-2">禁用下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector disabled></dy-selector>
+                        <dy-selector z-index="9" disabled></dy-selector>
                     </div>
                 </div>
                 <div class="form-group">
@@ -95,18 +113,33 @@
             </div>
         </dy-panel>
     </div>
+
     <!--<div ng-controller="treeCtrl as $ctrl">-->
-        <!--<dy-panel panel-title="test" theme="primary">-->
-            <!--<dy-tree tree-data="$ctrl.dataList" add-item="$ctrl.addMenu()"></dy-tree>-->
-            <!--&lt;!&ndash;<button class="btn btn-danger" ng-click="$ctrl.addMenu()">添加</button>&ndash;&gt;-->
-        <!--</dy-panel>-->
+    <!--<dy-panel panel-title="test" theme="primary">-->
+    <!--<dy-tree tree-data="$ctrl.dataList" add-item="$ctrl.addMenu()"></dy-tree>-->
+    <!--<button class="btn btn-danger" ng-click="$ctrl.addMenu()">添加</button>-->
+    <!--</dy-panel>-->
     <!--</div>-->
+
+    <div ng-controller="uploaderCtrl as $ctrl">
+        <dy-panel panel-title="dy-uploader 指令" theme="primary">
+            <dy-uploader
+                    ng-model="$ctrl.files"
+                    max-length="3" accept="image/*"
+                    max-length-error="$ctrl.maxError()"
+                    repeat-name-error="$ctrl.repeatNameError()"
+            ></dy-uploader>
+            <button class="btn btn-primary" ng-click="$ctrl.showFiles()">获取文件数组</button>
+        </dy-panel>
+    </div>
+
 </div>
 <script src="directive/panel/panel.js"></script>
 <script src="directive/selector/selector.js"></script>
 <script src="directive/step/step.js"></script>
 <script src="directive/tooltip/tooltip.js"></script>
 <script src="directive/tree/tree.js"></script>
-<script src="./index.js"></script>
+<script src="directive/uploader/uploader.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

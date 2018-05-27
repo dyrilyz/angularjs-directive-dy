@@ -19,6 +19,9 @@
   white-space: nowrap;
   cursor: not-allowed;
 }
+.dy-selector .dy-selector-value .dy-placeholder {
+  color: #999;
+}
 .dy-selector .dy-selector-able {
   cursor: pointer;
   background-color: #fff;
