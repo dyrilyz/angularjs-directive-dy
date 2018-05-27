@@ -4,7 +4,8 @@ angular.module('test', [
     'directive.step',
     'directive.tooltip',
     'directive.tree',
-    'directive.uploader'
+    'directive.uploader',
+    'directive.checkbox'
 ])
     .controller('tooltipCtrl', function () {
     })
@@ -38,13 +39,13 @@ angular.module('test', [
             {brand: '锤子', encoding: '005'}
         ];
         $ctrl.dyList4 = [];
-        $timeout(function() {
+        $timeout(function () {
             $ctrl.dyList4.push({brand: '苹果', encoding: '001'})
             $ctrl.dyList4.push({brand: '三星', encoding: '002'})
             $ctrl.dyList4.push({brand: '华为', encoding: '003'})
             $ctrl.dyList4.push({brand: '小米', encoding: '004'})
             $ctrl.dyList4.push({brand: '锤子', encoding: '005'})
-        },3000)
+        }, 3000)
 
         $ctrl.selectReset = function () {
             $ctrl.a = ''
@@ -90,4 +91,8 @@ angular.module('test', [
         $ctrl.fileTypeError = function () {
             $ctrl.errorMsg = '文件类型不符合'
         }
+    })
+    .controller('checkboxCtrl', function () {
+        var $ctrl = this
+        $ctrl.fav = ["eat","song"]
     })
