@@ -184,30 +184,38 @@ $scope.dyList3 = [
 
 ## <a name="uploader">dy-uploader 指令</a>
 
->这是一个封装的上传组件，可预览，可删除。
+>这是一个封装的图片上传组件，ngModel中绑定的为file类型的数组，支持本地图片预览。
+
+***Example：***
+```html
+<dy-uploader
+    ng-model="$ctrl.files"
+    max-length="3"
+    max-size="1024 * 1024 * 5"
+    file-type="/.(jpe?g|gif|png|bmp)$/i"
+    file-type-error="$ctrl.fileTypeError()"
+    max-length-error="$ctrl.maxLengthError()"
+    max-size-error="$ctrl.maxSizeError()"
+    repeat-name-error="$ctrl.repeatNameError()"></dy-uploader>
+```
 
 **属性详解：**
 
 ``ngModel``： 用于绑定file类型的数组。
 
-``maxLength``：上传最大数量。
+``maxLength``：上传最大数量(default: 20)。
 
-``accept``： 上传图片类型。
+``maxSize``：限制文件大小,单位为字节(default: 10M)。
 
-``maxLengthError``： 当超过限制是调用此方法。
+``fileType``：文件类型，值为正则表达式字面量(default: /.(jpe?g|png|bmp|gif)$/i)。
+
+``fileTypeError``： 当上传文件类型不匹配时调用此方法。
+
+``maxSizeError``： 当上传文件超过限制大小是调用此方法。
+
+``maxLengthError``： 当上传文件超过限制数量是调用此方法。
 
 ``repeatNameError``： 当上传重名是调用此方法。
-
-***Example：***
-```html
-<dy-uploader
-        ng-model="$ctrl.files"
-        max-length="3"
-        accept="image/*"
-        max-length-error="$ctrl.maxError()"
-        repeat-name-error="$ctrl.repeatNameError()">
-</dy-uploader>
-```
 
 持续更新中ing...
 

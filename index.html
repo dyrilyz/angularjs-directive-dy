@@ -125,10 +125,15 @@
         <dy-panel panel-title="dy-uploader 指令" theme="primary">
             <dy-uploader
                     ng-model="$ctrl.files"
-                    max-length="3" accept="image/*"
-                    max-length-error="$ctrl.maxError()"
+                    max-length="3"
+                    max-size="1024 * 1024 * 5"
+                    file-type="/.(jpe?g|gif|png|bmp)$/i"
+                    file-type-error="$ctrl.fileTypeError()"
+                    max-length-error="$ctrl.maxLengthError()"
+                    max-size-error="$ctrl.maxSizeError()"
                     repeat-name-error="$ctrl.repeatNameError()"></dy-uploader>
             <button class="btn btn-primary" ng-click="$ctrl.showFiles()">获取文件数组</button>
+            <div>error-msg: <span ng-bind="$ctrl.errorMsg"></span></div>
         </dy-panel>
     </div>
 

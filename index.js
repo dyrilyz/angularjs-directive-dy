@@ -74,13 +74,20 @@ angular.module('test', [
     })
     .controller('uploaderCtrl', function () {
         var $ctrl = this
+        $ctrl.fileType = /.(jpe?g|png|gif|bmp)$/i
         $ctrl.showFiles = function () {
             console.log($ctrl.files)
         }
-        $ctrl.maxError = function () {
-            console.log('不能超过三张，请重新选择')
+        $ctrl.maxLengthError = function () {
+            $ctrl.errorMsg = '不能超过三张，请重新选择'
+        }
+        $ctrl.maxSizeError = function () {
+            $ctrl.errorMsg = '不能超过5MB'
         }
         $ctrl.repeatNameError = function () {
-            console.log('文件名不能重复')
+            $ctrl.errorMsg = '文件名不能重复'
+        }
+        $ctrl.fileTypeError = function () {
+            $ctrl.errorMsg = '文件类型不符合'
         }
     })

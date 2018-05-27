@@ -1,4 +1,8 @@
 /**
+ * uploader
+ *
+ *
+ * @author rily
  */
 angular.module('directive.uploader', [])
     .directive('dyUploader', ['$compile', function ($compile) {
@@ -7,13 +11,28 @@ angular.module('directive.uploader', [])
             replace: true,
             scope: {
                 ngModel: '=',
-                maxLength: '=',
-                accept: '@',
+                fileTypeError: '&',
                 maxLengthError: '&',
+                maxSizeError: '&',
                 repeatNameError: '&'
             },
             templateUrl: 'directive/uploader/uploader.html',
             link: function ($scope, $elem, $attr) {
+                if (!angular.isDefined($attr.maxLength)) {
+                    $scope.maxLength = 20
+                } else {
+                    $scope.maxLength = eval($attr.maxLength)
+                }
+                if (!angular.isDefined($attr.maxSize)) {
+                    $attr.maxSize = 1024 * 1024 * 10
+                } else {
+                    $attr.maxSize = eval($attr.maxSize)
+                }
+                if (!angular.isDefined($attr.fileType)) {
+                    $attr.fileType = /.(jpe?g|png|bmp|gif)$/i
+                } else {
+                    $attr.fileType = eval($attr.fileType)
+                }
                 $scope.ngModel = []
                 $scope.ngModelTemp = []
                 $scope.pictureList = []
@@ -23,18 +42,31 @@ angular.module('directive.uploader', [])
                         var addIcon = $elem.find('input').parent()
                         $elem.find('input').remove()
                         addIcon.append($compile(
-                            '<input type="file" dy-uploader-input multiple="multiple" accept="{{accept}}" ng-model="ngModelTemp"/>'
+                            '<input type="file" dy-uploader-input multiple="multiple" accept="image/*" ng-model="ngModelTemp"/>'
                         )($scope))
                         // 判断图片数量是否超标
                         if (($scope.ngModelTemp.length + $scope.ngModel.length) <= $scope.maxLength) {
-                            // TODO 判断是否重名
-                            for (var i in $scope.ngModel) {
-                                for (var j in $scope.ngModelTemp) {
-                                    if ($scope.ngModel[i].name == $scope.ngModelTemp[j].name) {
+                            for (var i in $scope.ngModelTemp) {
+                                for (var j in $scope.ngModel) {
+                                    // 判断是否重名
+                                    if ($scope.ngModelTemp[i].name == $scope.ngModel[j].name) {
                                         $scope.repeatNameError()
                                         $scope.ngModelTemp = []
-                                        return;
+                                        return
                                     }
+                                }
+                                console.log($scope.ngModelTemp[i].size)
+                                // 判断是否超过限制大小
+                                if ($scope.ngModelTemp[i].size > $attr.maxSize) {
+                                    $scope.maxSizeError()
+                                    $scope.ngModelTemp = []
+                                    return
+                                }
+                                // 检查文件格式
+                                if (!$attr.fileType.test($scope.ngModelTemp[i].name)) {
+                                    $scope.fileTypeError()
+                                    $scope.ngModelTemp = []
+                                    return
                                 }
                             }
                             // 为ngModel和pictureList做遍历
@@ -67,8 +99,7 @@ angular.module('directive.uploader', [])
             scope: true,
             replace: true,
             bindToController: {
-                ngModel: '=',
-                accept: '@'
+                ngModel: '='
             },
             controllerAs: '$ctrl',
             controller: function ($scope, $element, $timeout) {
