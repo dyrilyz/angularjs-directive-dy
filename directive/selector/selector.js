@@ -64,9 +64,9 @@ angular.module('directive.selector', ['ngAnimate']).directive('dySelector', ['$d
                 }
             } else {
                 refreshList()
-                $scope.$watch('dyList', function () {
+                $scope.$watch('dyList.length', function () {
                     refreshList()
-                }, true)
+                })
             }
 
             function refreshList() {
