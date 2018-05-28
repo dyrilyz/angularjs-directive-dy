@@ -20,6 +20,7 @@
 > 3. [dy-step指令](#step)
 > 4. [dy-tooltip指令](#tooltip)
 > 5. [dy-uploader指令](#uploader)
+> 6. [dy-tree指令](#tree)
 
 ## <a name="import">指令的引入</a>
 
@@ -179,7 +180,7 @@ $scope.dyList3 = [
 <div dy-tooltip data-tip="这里就是你想显示的提示文字">...</div>
 ```
 
-## <a name="uploader">dy-uploader 指令</a>
+## <a name="uploader">dy-uploader 指令</a> ``2018-05-28更新``
 
 >这是一个封装的图片上传组件，ngModel中绑定的为file类型的数组，支持本地图片预览。
 
@@ -213,6 +214,59 @@ $scope.dyList3 = [
 ``maxLengthError``： 当上传文件超过限制数量是调用此方法。
 
 ``repeatNameError``： 当上传重名是调用此方法。
+
+## <a name="tree">dy-tree 指令</a> ``2018-05-29更新``
+
+> 这个指令可以构造一个简单的目录树结构，目前仅支持单选，后续将补充其他功能。
+
+***Example：***
+```html
+<dy-tree tree-data="$ctrl.dataList" ng-model="$ctrl.treeVal"></dy-tree>
+```
+
+**属性详解：**
+
+``ngModel``：用于绑定获取单选值。
+
+``treeData``：用于构造树模型的数据。
+
+**treeData数据结构**
+
+treeData为一个对象数组。目前，这个属性的数据结构比较开放，若其中包含层级结构的子元素，
+使用children将子元素包裹即可。*children也是一个对象数组*。
+
+***Example：***
+```javascript
+$ctrl.dataList = [
+            {
+                id: 1, name: '新建文件夹1', type: 1, parentId: 0, children: [
+                {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
+                {
+                    id: 4, name: '新建文件夹4', type: 2, parentId: 1, children:
+                    [
+                        {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
+                        {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
+                    ]
+                }
+            ]
+            },
+            {
+                id: 2, name: '新建文件夹2', type: 1, parentId: 0, children:
+                [
+                    {
+                        id: 5,
+                        name: '新建文件夹5',
+                        type: 2,
+                        parentId: 2,
+                        children: [{id: 10, name: '新建文件夹10', type: 2, parentId: 5}]
+                    },
+                    {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
+                    {id: 7, name: '新建文件夹7', type: 2, parentId: 2}
+                ]
+            }
+
+        ]
+```
 
 持续更新中ing...
 

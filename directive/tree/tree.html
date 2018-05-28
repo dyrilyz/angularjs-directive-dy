@@ -1,11 +1,3 @@
 <div class="dy-tree">
-    <ul>
-        <li ng-repeat="i in rootItem">
-            <div>
-                <span class="df df-folder"></span>
-                <span ng-bind="i.name"></span>
-            </div>
-            <div dy-tree-level root-point="i" children-data="treeData"></div>
-        </li>
-    </ul>
+    <dy-tree-item tree-list="$ctrl.treeData" on-select="$ctrl.onSelect(item)"></dy-tree-item>
 </div>

@@ -4,64 +4,58 @@
 angular.module('directive.tree', [])
     .directive('dyTree', [function () {
         return {
-            restrict: 'EA',
+            restrict: 'E',
             replace: true,
-            templateUrl: 'directive/tree/tree.html',
-            scope: {
-                treeData: '='
+            scope: true,
+            bindToController: {
+                treeData: '=',
+                ngModel: '='
             },
             controllerAs: '$ctrl',
-            link: function ($scope) {
-                $scope.rootItem = []
-                for (var i in $scope.treeData) {
-                    var flag = false
-                    for (var j in $scope.treeData) {
-                        if ($scope.treeData[i].parentId != $scope.treeData[j].id) {
-                            flag = true
-                        } else {
-                            flag = false
-                            break;
+            templateUrl: 'directive/tree/tree.html',
+            controller: function ($scope) {
+                var $ctrl = this
+                $ctrl.onSelect = function(item) {
+                    __recursion($ctrl.treeData);
+                    $ctrl.ngModel = item
+                    item.itemActive = true
+                }
+                function __recursion(list) {
+                    if (list && list.length) {
+                        for (var i in list) {
+                            list[i].itemActive = false
+                            __recursion(list[i].children)
                         }
                     }
-                    if (flag) {
-                        $scope.rootItem.push($scope.treeData[i])
-                    }
                 }
+
+                $scope.$watch('$ctrl.ngModel', function(newVal) {
+                    if (!newVal) {
+                        __recursion($ctrl.treeData)
+                    }
+                })
             }
         };
     }])
-    .directive('dyTreeLevel', function () {
+    .directive('dyTreeItem', [function () {
         return {
-            restrict: 'A',
-            transclude: true,
-            scope: {
-                rootPoint: '=',
-                childrenData: '='
+            restrict: 'E',
+            replace: true,
+            scope: true,
+            bindToController: {
+                treeList: '=',
+                onSelect: '&'
             },
-            template: `
-                    <ul>
-                        <li ng-repeat="i in points">
-                            <div>
-                                <span class="df df-folder"></span>
-                                <span ng-bind="i.name"></span>
-                            </div>
-                            <div dy-tree-level root-point="i" children-data="childrenData"></div>
-                        </li>
-                    </ul>
-            `,
-            link: function ($scope) {
-                $scope.points = []
-                var rootIndex = []
-                for (var i in $scope.childrenData) {
-                    console.log(1)
-                    if ($scope.rootPoint.id == $scope.childrenData[i].parentId) {
-                        rootIndex.push(i)
-                        $scope.points.push($scope.childrenData[i])
-                    }
+            controllerAs: '$ctrl',
+            templateUrl: 'directive/tree/treeItem.html',
+            controller: function () {
+                var $ctrl = this
+                $ctrl.getItem = function (item) {
+                    $ctrl.onSelect({item: item})
                 }
-                // for (var i = rootIndex.length - 1; i >= 0; i --) {
-                //     $scope.childrenData.splice(rootIndex[i], 1)
-                // }
+                $ctrl.onChildrenSelect = function (item) {
+                    $ctrl.onSelect({item: item})
+                }
             }
         }
-    })
+    }])

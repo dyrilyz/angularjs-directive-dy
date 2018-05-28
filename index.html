@@ -113,14 +113,7 @@
             </div>
         </dy-panel>
     </div>
-
-    <!--<div ng-controller="treeCtrl as $ctrl">-->
-    <!--<dy-panel panel-title="test" theme="primary">-->
-    <!--<dy-tree tree-data="$ctrl.dataList" add-item="$ctrl.addMenu()"></dy-tree>-->
-    <!--<button class="btn btn-danger" ng-click="$ctrl.addMenu()">添加</button>-->
-    <!--</dy-panel>-->
-    <!--</div>-->
-
+    <!--dy-uploader指令-->
     <div ng-controller="uploaderCtrl as $ctrl">
         <dy-panel panel-title="dy-uploader 指令" theme="primary">
             <dy-uploader
@@ -136,19 +129,29 @@
             <div>error-msg: <span ng-bind="$ctrl.errorMsg"></span></div>
         </dy-panel>
     </div>
+    <!--dy-tree指令-->
+    <div ng-controller="treeCtrl as $ctrl">
+        <dy-panel panel-title="基础树指令" theme="primary">
+            <dy-tree tree-data="$ctrl.dataList" ng-model="$ctrl.treeVal"></dy-tree>
+            <div>
+                <button ng-click="$ctrl.removeModal()" class="btn btn-warning">清空modal值</button>
+            </div>
+            <div>你选择的树节点名称为：<span ng-bind="$ctrl.treeVal.name"></span></div>
+        </dy-panel>
+    </div>
 
     <!--<div ng-controller="checkboxCtrl as $ctrl">-->
-        <!--<dy-panel panel-title="dy-checkbox 指令" theme="primary">-->
-            <!--<form>-->
-                <!--<dy-checkbox ng-model="$ctrl.fav">-->
-                    <!--<dy-checkbox-item title="吃饭" value="eat"></dy-checkbox-item>-->
-                    <!--<dy-checkbox-item title="睡觉" value="sleep"></dy-checkbox-item>-->
-                    <!--<dy-checkbox-item title="唱歌" value="song"></dy-checkbox-item>-->
-                    <!--<dy-checkbox-item title="上班" value="work"></dy-checkbox-item>-->
-                <!--</dy-checkbox>-->
-                <!--<div>选项值：{{$ctrl.fav}}</div>-->
-            <!--</form>-->
-        <!--</dy-panel>-->
+    <!--<dy-panel panel-title="dy-checkbox 指令" theme="primary">-->
+    <!--<form>-->
+    <!--<dy-checkbox ng-model="$ctrl.fav">-->
+    <!--<dy-checkbox-item title="吃饭" value="eat"></dy-checkbox-item>-->
+    <!--<dy-checkbox-item title="睡觉" value="sleep"></dy-checkbox-item>-->
+    <!--<dy-checkbox-item title="唱歌" value="song"></dy-checkbox-item>-->
+    <!--<dy-checkbox-item title="上班" value="work"></dy-checkbox-item>-->
+    <!--</dy-checkbox>-->
+    <!--<div>选项值：{{$ctrl.fav}}</div>-->
+    <!--</form>-->
+    <!--</dy-panel>-->
     <!--</div>-->
 </div>
 <script src="directive/panel/panel.js"></script>

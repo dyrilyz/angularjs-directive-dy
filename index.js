@@ -54,25 +54,6 @@ angular.module('test', [
             $ctrl.d = ''
         }
     })
-    .controller('treeCtrl', function () {
-        var $ctrl = this
-        $ctrl.dataList = [
-            {id: 1, name: '新建文件夹1', type: 1, parentId: 0},
-            {id: 2, name: '新建文件夹2', type: 1, parentId: 0},
-            {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
-            {id: 4, name: '新建文件夹4', type: 2, parentId: 1},
-            {id: 5, name: '新建文件夹5', type: 2, parentId: 2},
-            {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
-            {id: 7, name: '新建文件夹7', type: 2, parentId: 2},
-            {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
-            {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
-            {id: 10, name: '新建文件夹10', type: 2, parentId: 5}
-        ]
-        $ctrl.addMenu = function () {
-            console.log('addMenu')
-            $ctrl.dataList.push({id: 11, name: '新建文件夹11', type: 2, parentId: 5})
-        }
-    })
     .controller('uploaderCtrl', function () {
         var $ctrl = this
         $ctrl.fileType = /.(jpe?g|png|gif|bmp)$/i
@@ -94,5 +75,40 @@ angular.module('test', [
     })
     .controller('checkboxCtrl', function () {
         var $ctrl = this
-        $ctrl.fav = ["eat","song"]
+        $ctrl.fav = ["eat", "song"]
+    })
+    .controller('treeCtrl', function () {
+        var $ctrl = this
+        $ctrl.dataList = [
+            {
+                id: 1, name: '新建文件夹1', type: 1, parentId: 0, children: [
+                {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
+                {
+                    id: 4, name: '新建文件夹4', type: 2, parentId: 1, children:
+                    [
+                        {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
+                        {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
+                    ]
+                }
+            ]
+            },
+            {
+                id: 2, name: '新建文件夹2', type: 1, parentId: 0, children:
+                [
+                    {
+                        id: 5,
+                        name: '新建文件夹5',
+                        type: 2,
+                        parentId: 2,
+                        children: [{id: 10, name: '新建文件夹10', type: 2, parentId: 5}]
+                    },
+                    {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
+                    {id: 7, name: '新建文件夹7', type: 2, parentId: 2}
+                ]
+            }
+
+        ]
+        $ctrl.removeModal = function () {
+            $ctrl.treeVal = null
+        }
     })

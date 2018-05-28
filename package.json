@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/RilyZhang/angularjs-directive-dy/issues"
   },
-  "homepage": "https://github.com/RilyZhang/angularjs-directive-dy#readme"
+  "homepage": "https://github.com/RilyZhang/angularjs-directive-dy#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
 }
