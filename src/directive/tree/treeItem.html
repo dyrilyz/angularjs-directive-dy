@@ -1,0 +1,14 @@
+<ul>
+    <li ng-repeat="item in $ctrl.treeList" class="list-item" ng-init="item.isShowChildren = false">
+        <a class="df df-down" ng-click="item.isShowChildren = !item.isShowChildren" ng-show="item.children.length > 0"
+           ng-class="{active:item.isShowChildren}"></a>
+        <div>
+            <a href="javascript:void(0)" ng-click="$ctrl.getItem(item)" ng-class="{active: item.itemActive}">
+                <i class="df df-folder"></i>
+                <span ng-bind="item.name"></span>
+            </a>
+        </div>
+        <dy-tree-item ng-show="item.isShowChildren" tree-list="item.children"
+                      on-select="$ctrl.onChildrenSelect(item)"></dy-tree-item>
+    </li>
+</ul>

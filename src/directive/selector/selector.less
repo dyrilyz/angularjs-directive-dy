@@ -1,0 +1,128 @@
+.dy-selector {
+    position: relative;
+    z-index: 10;
+
+    .standard-height() {
+        height: 34px;
+        line-height: 34px;
+    }
+
+    * {
+        box-sizing: border-box;
+        user-select: none;
+    }
+
+    .dy-selector-value {
+        .standard-height ();
+        border: 1px solid #d9d9d9;
+        padding: 0 27px 0 7px;
+        border-radius: 4px;
+        box-shadow: 0 0 1px #f1f1f1 inset;
+        background-color: #eee;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: not-allowed;
+
+        .dy-placeholder {
+            color: #999;
+        }
+    }
+
+    .dy-selector-able {
+        cursor: pointer;
+        background-color: #fff;
+    }
+
+    .df-down {
+        font-size: 12px;
+        display: block;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        color: #d9d9d9;
+        transition: all linear 0.2s;
+        transform: rotate(0deg);
+
+        &.rotate-up {
+            transform: rotate(180deg);
+        }
+    }
+
+    .dy-selector-list {
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #5b8fdb;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px #aaa;
+        overflow: hidden;
+        transition: all linear 0.2s;
+        max-height: 500px;
+
+        &.ng-hide {
+            max-height: 0;
+        }
+
+        & > div {
+            padding: 5px;
+            position: relative;
+
+            input {
+                width: 100%;
+                margin: 0;
+                padding: 0 27px 0 5px;
+                outline: none;
+                border-radius: 4px;
+                border: 1px solid #aaa;
+                box-shadow: 0 0 3px #cfcfcf inset;
+                .standard-height();
+            }
+
+            .df-search-bold {
+                font-size: 19px;
+                display: block;
+                position: absolute;
+                top: 8px;
+                right: 10px;
+            }
+
+            svg {
+                position: absolute;
+                right: 12px;
+                top: 5px;
+
+                path {
+                    fill: #696969;
+                }
+            }
+        }
+
+        & > ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-height: 250px;
+            overflow: auto;
+
+            & > li {
+                .standard-height ();
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding: 0 5px;
+
+                &:hover {
+                    background-color: #ebf3fe;
+                }
+            }
+        }
+    }
+
+}
