@@ -6,12 +6,12 @@
  *
  * @author rily
  */
-import app from '../../app'
+import main from '../main'
 import template from './tree.html'
 import templateItem from './treeItem.html'
 import './tree.less'
 
-app
+main.app
     .directive('dyTree', [function () {
         return {
             restrict: 'E',

@@ -1,7 +1,7 @@
-import app from '../../app'
+import main from '../main'
 import './tooltip.less'
 
-app.directive('dyTooltip', function () {
+main.app.directive('dyTooltip', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {

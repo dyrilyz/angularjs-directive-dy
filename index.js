@@ -1,12 +1,8 @@
-import vendor from './vendor'
-
-let app = vendor.angular.module('angularjs-directive-dy', [
-    vendor.animate
-])
-
-app
-    .controller('tooltipCtrl', function () {
-    })
+/**
+ * Example App:
+ */
+var testApp = angular.module('test', ['angularjs-directive-dy'])
+    .controller('tooltipCtrl', function () {})
     .controller('stepCtrl', function () {
         var $ctrl = this
         $ctrl.step = 0
@@ -110,5 +106,3 @@ app
             $ctrl.treeVal = null
         }
     })
-
-export default app

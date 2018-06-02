@@ -37,11 +37,11 @@
  *                   保佑代码，不出Bug
  *
  */
-import app from '../../app'
+import main from '../main'
 import template from './step.html'
 import './step.less'
 
-app.directive('dyStep', function () {
+main.app.directive('dyStep', function () {
     return {
         restrict: 'E',
         scope: {

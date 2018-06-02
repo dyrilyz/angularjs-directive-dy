@@ -1,8 +1,8 @@
-import app from '../../app'
+import main from '../main'
 import template from './panel.html'
 import './panel.less'
 
-app.directive('dyPanel', function () {
+main.app.directive('dyPanel', function () {
     return {
         restrict: 'E',
         replace: true,

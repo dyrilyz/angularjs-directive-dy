@@ -1,22 +1,21 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-const extractCss = new ExtractTextWebpackPlugin('dist/css/[name].css')
-const extractLess = new ExtractTextWebpackPlugin('dist/css/[name].css')
-const webpack = require('webpack')
+const extractCss = new ExtractTextWebpackPlugin('css/[name].css')
+const extractLess = new ExtractTextWebpackPlugin('css/[name].css')
 
 const conf = {
     entry: {
-        app: './src/app.js',
-        main: './src/main.js'
+        index: './src/index.js',
     },
     output: {
-        path: path.resolve(__dirname, ''),
-        filename: 'dist/js/[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name].js',
         publicPath: ''
     },
-    mode: 'development',
+    // mode: 'development',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -30,7 +29,7 @@ const conf = {
                 use: extractCss.extract({
                     use: {
                         loader: 'css-loader',
-                        // options: {minimize: true}
+                        options: {minimize: true}
                     }
                 })
             },
@@ -40,7 +39,7 @@ const conf = {
                     use: [
                         {
                             loader: 'css-loader',
-                            // options: {minimize: true}
+                            options: {minimize: true}
                         },
                         'less-loader'
                     ]
@@ -54,7 +53,7 @@ const conf = {
                         options: {
                             limit: 2000,
                             name: '[name].[ext]',
-                            outputPath: 'dist/static/img'
+                            outputPath: 'static/img'
                         }
                     }
                 ]
@@ -66,7 +65,7 @@ const conf = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'dist/static/font'
+                            outputPath: 'static/font'
                         }
                     }
                 ]
@@ -78,22 +77,22 @@ const conf = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './src/index.html'
+        // new HtmlWebpackPlugin({
+        //     filename: 'index.html',
+        //     template: './src/index.html'
             // minify: {
             //     removeComments: true,
             //     collapseWhitespace: true
             // }
-        }),
-        new ExtractTextWebpackPlugin('dist/css/style.css'),
-        // new CleanWebpackPlugin('dist'),
+        // }),
+        new ExtractTextWebpackPlugin('css/[name].css'),
+        new CleanWebpackPlugin('dist'),
         extractCss,
         extractLess
     ],
-    devServer: {
-        port: 80
-    },
+    // devServer: {
+    //     port: 80
+    // },
     optimization: {
         splitChunks: {
             chunks: "all",

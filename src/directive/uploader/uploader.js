@@ -3,11 +3,11 @@
  * @author rily
  */
 
-import app from '../../app'
+import main from '../main'
 import template from './uploader.html'
 import './uploader.less'
 
-app
+main.app
     .directive('dyUploader', ['$compile', function ($compile) {
         return {
             restrict: 'EA',

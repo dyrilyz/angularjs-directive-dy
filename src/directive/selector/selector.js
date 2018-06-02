@@ -41,11 +41,11 @@
  *                   别人笑我忒疯癫，我笑自己命太贱；
  *                   不见满街漂亮妹，哪个归得程序员？
  */
-import app from '../../app'
+import main from '../main'
 import template from './selector.html'
 import './selector.less'
 
-app.directive('dySelector', ['$document', function ($document) {
+main.app.directive('dySelector', ['$document', function ($document) {
     return {
         restrict: 'E',
         replace: true,
@@ -80,6 +80,7 @@ app.directive('dySelector', ['$document', function ($document) {
                     $scope.dyList[i].dyVal = $scope.dyList[i][$scope.objectHandle.dyVal]
                 }
             }
+
             // 检测层高传入
             if ($attr.zIndex && $attr.zIndex.length > 0) {
                 $element.css({'z-index': $attr.zIndex})

@@ -1,5 +1,4 @@
 .idea
 .vscode
-*/**/*.map
 test.css
 node_modules

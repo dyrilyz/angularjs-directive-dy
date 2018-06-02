@@ -1,5 +1,8 @@
 {
-    "presets": [
-        "env"
-    ]
+  "presets": [
+    "env"
+  ],
+  "plugins": [
+    "angularjs-annotate"
+  ]
 }
