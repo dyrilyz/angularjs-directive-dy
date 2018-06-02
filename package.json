@@ -2,13 +2,15 @@
   "name": "angularjs-directive-dy",
   "version": "1.0.0",
   "description": "这是一个angularjs指令库，基于angularjs 1.x。这个库提供了一些我们常用的组件，例如：",
-  "main": "index.js",
+  "main": "main",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -p 8080 -o"
+    "start": "http-server -p 8080 -o",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,26 @@
   },
   "homepage": "https://github.com/RilyZhang/angularjs-directive-dy#readme",
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "angular": "^1.7.0",
+    "angular-animate": "^1.7.0",
+    "bootstrap": "^3.3.7"
   }
 }

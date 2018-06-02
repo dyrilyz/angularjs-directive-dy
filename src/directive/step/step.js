@@ -37,18 +37,18 @@
  *                   保佑代码，不出Bug
  *
  */
-angular.module('directive.step', []).directive('dyStep', function () {
+import app from '../../app'
+import template from './step.html'
+import './step.less'
+
+app.directive('dyStep', function () {
     return {
         restrict: 'E',
         scope: {
             stepList: '=',
             step: '@'
         },
-        template: `
-                <ul class="dy-step">
-                    <li ng-repeat="item in stepList track by $index" ng-class="{active: isActive($index)}"><span ng-bind="item"></span></li>
-                </ul>
-                `,
+        template: template,
         controller: function ($scope) {
             $scope.isActive = function ($index) {
                 if (!$scope.step) {

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>angularjs-directive-dy示例</title>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-animate.min.js"></script>
-    <link href="lib/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="directive/style/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <style type="text/css">
         .block-circle {
             width: 200px;
@@ -20,8 +16,11 @@
             background-color: #999;
         }
     </style>
+    <link href="dist/css/vendor.css" rel="stylesheet">
+    <link href="dist/css/main.css" rel="stylesheet">
 </head>
-<body>
+
+<body ng-app="angularjs-directive-dy">
 <header class="navbar navbar-default">
     <div class="container">
         <h3>angularjs-directive-dy示例</h3>
@@ -53,7 +52,8 @@
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="$ctrl.a"></span>
+                        选择的值为：
+                        <span ng-bind="$ctrl.a"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -63,7 +63,8 @@
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="$ctrl.b"></span>
+                        选择的值为：
+                        <span ng-bind="$ctrl.b"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -73,7 +74,8 @@
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="$ctrl.a"></span>
+                        选择的值为：
+                        <span ng-bind="$ctrl.a"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,7 +86,8 @@
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="$ctrl.c"></span>
+                        选择的值为：
+                        <span ng-bind="$ctrl.c"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -95,7 +98,8 @@
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="$ctrl.d"></span>
+                        选择的值为：
+                        <span ng-bind="$ctrl.d"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -116,17 +120,14 @@
     <!--dy-uploader指令-->
     <div ng-controller="uploaderCtrl as $ctrl">
         <dy-panel panel-title="dy-uploader 指令" theme="primary">
-            <dy-uploader
-                    ng-model="$ctrl.files"
-                    max-length="3"
-                    max-size="1024 * 1024 * 5"
-                    file-type="/.(jpe?g|gif|png|bmp)$/i"
-                    file-type-error="$ctrl.fileTypeError()"
-                    max-length-error="$ctrl.maxLengthError()"
-                    max-size-error="$ctrl.maxSizeError()"
-                    repeat-name-error="$ctrl.repeatNameError()"></dy-uploader>
+            <dy-uploader ng-model="$ctrl.files" max-length="3" max-size="1024 * 1024 * 5"
+                         file-type="/.(jpe?g|gif|png|bmp)$/i" file-type-error="$ctrl.fileTypeError()"
+                         max-length-error="$ctrl.maxLengthError()" max-size-error="$ctrl.maxSizeError()"
+                         repeat-name-error="$ctrl.repeatNameError()"></dy-uploader>
             <button class="btn btn-primary" ng-click="$ctrl.showFiles()">获取文件数组</button>
-            <div>error-msg: <span ng-bind="$ctrl.errorMsg"></span></div>
+            <div>error-msg:
+                <span ng-bind="$ctrl.errorMsg"></span>
+            </div>
         </dy-panel>
     </div>
     <!--dy-tree指令-->
@@ -136,31 +137,15 @@
             <div>
                 <button ng-click="$ctrl.removeModal()" class="btn btn-warning">清空modal值</button>
             </div>
-            <div>你选择的树节点名称为：<span ng-bind="$ctrl.treeVal.name"></span></div>
+            <div>你选择的树节点名称为：
+                <span ng-bind="$ctrl.treeVal.name"></span>
+            </div>
         </dy-panel>
     </div>
-
-    <!--<div ng-controller="checkboxCtrl as $ctrl">-->
-    <!--<dy-panel panel-title="dy-checkbox 指令" theme="primary">-->
-    <!--<form>-->
-    <!--<dy-checkbox ng-model="$ctrl.fav">-->
-    <!--<dy-checkbox-item title="吃饭" value="eat"></dy-checkbox-item>-->
-    <!--<dy-checkbox-item title="睡觉" value="sleep"></dy-checkbox-item>-->
-    <!--<dy-checkbox-item title="唱歌" value="song"></dy-checkbox-item>-->
-    <!--<dy-checkbox-item title="上班" value="work"></dy-checkbox-item>-->
-    <!--</dy-checkbox>-->
-    <!--<div>选项值：{{$ctrl.fav}}</div>-->
-    <!--</form>-->
-    <!--</dy-panel>-->
-    <!--</div>-->
 </div>
-<script src="directive/panel/panel.js"></script>
-<script src="directive/selector/selector.js"></script>
-<script src="directive/step/step.js"></script>
-<script src="directive/tooltip/tooltip.js"></script>
-<script src="directive/tree/tree.js"></script>
-<script src="directive/uploader/uploader.js"></script>
-<script src="directive/checkbox/checkbox.js"></script>
-<script src="index.js"></script>
+<script type="text/javascript" src="dist/js/vendor.js"></script>
+<script type="text/javascript" src="dist/js/app.js"></script>
+<script type="text/javascript" src="dist/js/main.js"></script>
 </body>
+
 </html>
