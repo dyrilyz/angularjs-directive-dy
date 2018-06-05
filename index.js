@@ -1,7 +1,7 @@
 /**
  * Example App:
  */
-var testApp = angular.module('test', ['angularjs-directive-dy'])
+var testApp = angular.module('test', ['ngAnimate', 'angularjs-directive-dy'])
     .controller('tooltipCtrl', function () {})
     .controller('stepCtrl', function () {
         var $ctrl = this

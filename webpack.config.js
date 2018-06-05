@@ -12,7 +12,12 @@ const conf = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
-        publicPath: ''
+        publicPath: '',
+        libraryTarget: 'umd'
+    },
+    externals: {
+        angular: 'angular',
+        ngAnimate: 'angular-animate'
     },
     // mode: 'development',
     mode: 'production',
@@ -93,16 +98,16 @@ const conf = {
     // devServer: {
     //     port: 80
     // },
-    optimization: {
-        splitChunks: {
-            chunks: "all",
-            minSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            name: 'vendor'
-        }
-    }
+    //optimization: {
+    //    splitChunks: {
+    //        chunks: "all",
+    //        minSize: 0,
+    //        minChunks: 1,
+    //        maxAsyncRequests: 5,
+    //        maxInitialRequests: 3,
+    //        name: 'vendor'
+    //    }
+    //}
 
 }
 module.exports = conf
