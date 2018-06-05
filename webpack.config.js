@@ -1,5 +1,4 @@
 const path = require('path')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const extractCss = new ExtractTextWebpackPlugin('css/[name].css')
@@ -7,7 +6,7 @@ const extractLess = new ExtractTextWebpackPlugin('css/[name].css')
 
 const conf = {
     entry: {
-        index: './src/index.js',
+        'angular-directive-dy': './src/index.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -82,32 +81,10 @@ const conf = {
         ]
     },
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     filename: 'index.html',
-        //     template: './src/index.html'
-            // minify: {
-            //     removeComments: true,
-            //     collapseWhitespace: true
-            // }
-        // }),
         new ExtractTextWebpackPlugin('css/[name].css'),
         new CleanWebpackPlugin('dist'),
         extractCss,
         extractLess
-    ],
-    // devServer: {
-    //     port: 80
-    // },
-    //optimization: {
-    //    splitChunks: {
-    //        chunks: "all",
-    //        minSize: 0,
-    //        minChunks: 1,
-    //        maxAsyncRequests: 5,
-    //        maxInitialRequests: 3,
-    //        name: 'vendor'
-    //    }
-    //}
-
+    ]
 }
 module.exports = conf
