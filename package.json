@@ -1,6 +1,6 @@
 {
   "name": "angularjs-directive-dy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "angularjs指令库，基于angularjs 1.5+。",
   "main": "./src/index",
   "directories": {
