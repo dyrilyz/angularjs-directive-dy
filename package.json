@@ -1,7 +1,7 @@
 {
   "name": "angularjs-directive-dy",
-  "version": "1.0.0",
-  "description": "这是一个angularjs指令库，基于angularjs 1.x。",
+  "version": "1.0.3",
+  "description": "angularjs指令库，基于angularjs 1.5+。",
   "main": "./src/index",
   "directories": {
     "lib": "lib"
@@ -42,8 +42,8 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "angular": "^1.7.0",
-    "angular-animate": "^1.7.0",
+    "angular": "^1.6.0",
+    "angular-animate": "^1.6.0",
     "bootstrap": "^3.3.7"
   }
 }
