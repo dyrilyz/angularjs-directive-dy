@@ -42,8 +42,6 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "angular": "^1.6.0",
-    "angular-animate": "^1.6.0",
-    "bootstrap": "^3.3.7"
+    "angular": "^1.6.0"
   }
 }
