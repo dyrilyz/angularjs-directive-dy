@@ -1,6 +1,6 @@
 # angularjs-directive-dy
 
-这是一个angularjs指令库，基于angularjs 1.x。这个库提供了一些我们常用的组件，例如：
+这是一个angularjs指令库，基于angularjs 1.5+。这个库提供了一些我们常用的组件，例如：
 
 * 更美观更强大的select下拉指令；
 
@@ -24,47 +24,26 @@
 
 ## <a name="import">指令的引入</a>
 
-指令的编码为模块化编码，因此如果需要引入，需要单独引入具体指令的js文件和css文件。例如：
+使用npm引入指令：
 
 ***Example：***
-```html
-<!-- 引入字体样式 -->
-<link rel="stylesheet" href="angularjs-directive-dy/directive/style/dyFont.css">
-<!-- 引入面板样式 -->
-<link rel="stylesheet" href="angularjs-directive-dy/directive/panel/panel.css">
-<!-- 引入面板指令js -->
-<script src="angularjs-directive-dy/directive/panel/panel.min.js"></script>
+```text
+npm i -S angularjs-directive-dy
 ```
 
 ```javascript
-// 注入面板指令
-var app = angular.module('myApp', ['directive.panel']);
+import directiveDy from 'angularjs-directive-dy'
+
+var app = angular.module('yourModuleName', [directiveDy]);
 ```
+
+或者可以直接去dist文件夹中寻找编译好的js脚本。别忘了引入样式
 
 ## <a name="selector">dy-selector指令</a>
 
 >dy-selector指令是一个模拟select下拉框的指令，但是它比select下拉框更加强大和美观。
 当你的选项有很多时，它可以进行模糊匹配，让可选项变少。此外，它还支持字符串数组，对象数组。<br/>
-**另外请注意：这个指令需要字体样式（dyFont.css）支持，如果未引入字体样式，可能导致下拉图标和放大镜图标的丢失！**
 
-首先要做的时将其引入到你的html文件中：
-
-***Example：***
-```html
-<script src="angularjs-directive-dy/directive/selector/selector.js"></script>
-<link rel="stylesheet" href="angularjs-directive-dy/directive/selector/selector.css">
-<link rel="stylesheet" href="angularjs-directive-dy/directive/style/dyFont.css">
-```
-
-然后将其注入到你的angular应用中：
-
-***Example：***
-
-```javascript
-var app = angular.module('app', ['directive.tooltip']);
-```
-
-现在我们就可以在页面中使用dy-selector指令了！
 
 ***Example：***
 ```html
@@ -163,26 +142,15 @@ $scope.dyList3 = [
 
 不多说，直接贴代码：
 
-```html
-<!-- 首先还是引入代码并加载指令 -->
-<script src="angularjs-directive-dy/directive/tooltip/tooltip.js"></script>
-<link rel="stylesheet" href="angularjs-directive-dy/directive/tooltip/tooltip.css">
-<script>
-    angular.module('app', ['directive.tooltip']);
-</script>
-```
-
-接着就可以直接使用了：
-
 ***Example：***
 
 ```html
 <div dy-tooltip data-tip="这里就是你想显示的提示文字">...</div>
 ```
 
-## <a name="uploader">dy-uploader 指令</a> ``2018-05-28更新``
+## <a name="uploader">dy-uploader 指令</a> 
 
->这是一个封装的图片上传组件，ngModel中绑定的为file类型的数组，支持本地图片预览。
+> 这是一个封装的图片上传组件，ngModel中绑定的为file类型的数组，支持本地图片预览。
 
 ***Example：***
 ```html
@@ -215,7 +183,7 @@ $scope.dyList3 = [
 
 ``repeatNameError``： 当上传重名是调用此方法。
 
-## <a name="tree">dy-tree 指令</a> ``2018-05-29更新``
+## <a name="tree">dy-tree 指令</a>
 
 > 这个指令可以构造一个简单的目录树结构，目前仅支持单选，后续将补充其他功能。
 
@@ -232,8 +200,8 @@ $scope.dyList3 = [
 
 **treeData数据结构**
 
-treeData为一个对象数组。目前，这个属性的数据结构比较开放，若其中包含层级结构的子元素，
-使用children将子元素包裹即可。*children也是一个对象数组*。
+treeData为一个对象数组。目前，这个属性的数据结构比较开放，只有``name``属性为必要的属性。若其中包含层级结构的子元素，
+使用``children``将子元素包裹即可。*``children``也是一个对象数组*。
 
 ***Example：***
 ```javascript
