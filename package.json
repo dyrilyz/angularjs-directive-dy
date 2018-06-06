@@ -1,9 +1,8 @@
 {
   "name": "angularjs-directive-dy",
-  "version": "1.0.0",
-  "description": "这是一个angularjs指令库，基于angularjs 1.x。",
-  "main": "dist/angularjs-directive-dy",
-  "author": "",
+  "version": "1.0.5",
+  "description": "angularjs指令库，基于angularjs 1.5+。",
+  "main": "./src/index",
   "directories": {
     "lib": "lib"
   },
@@ -16,12 +15,14 @@
     "url": "git+https://github.com/RilyZhang/angularjs-directive-dy.git"
   },
   "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RilyZhang/angularjs-directive-dy/issues"
   },
   "homepage": "https://github.com/RilyZhang/angularjs-directive-dy#readme",
   "devDependencies": {
+    "angular": "^1.6.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-angularjs-annotate": "^0.9.0",
@@ -40,11 +41,5 @@
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
-  },
-  "dependencies": {
-    "angular": "^1.7.0",
-    "angular-animate": "^1.7.0",
-    "angularjs-directive-dy": "^1.0.0",
-    "bootstrap": "^3.3.7"
   }
 }
