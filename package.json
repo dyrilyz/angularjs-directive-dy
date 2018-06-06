@@ -2,7 +2,8 @@
   "name": "angularjs-directive-dy",
   "version": "1.0.0",
   "description": "这是一个angularjs指令库，基于angularjs 1.x。",
-  "main": "./src/index",
+  "main": "dist/angularjs-directive-dy",
+  "author": "",
   "directories": {
     "lib": "lib"
   },
@@ -15,7 +16,6 @@
     "url": "git+https://github.com/RilyZhang/angularjs-directive-dy.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RilyZhang/angularjs-directive-dy/issues"
@@ -44,6 +44,7 @@
   "dependencies": {
     "angular": "^1.7.0",
     "angular-animate": "^1.7.0",
+    "angularjs-directive-dy": "^1.0.0",
     "bootstrap": "^3.3.7"
   }
 }
