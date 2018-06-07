@@ -238,4 +238,6 @@ $ctrl.dataList = [
 
 持续更新中ing...
 
+待开发：滚动条美化、DateTimePicker
+
 如有疑问，请提Issues。
