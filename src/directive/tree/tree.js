@@ -24,7 +24,7 @@ main.app
             controllerAs: '$ctrl',
             template: template,
             controller: function ($scope) {
-                var $ctrl = this
+                let $ctrl = this
                 $ctrl.onSelect = function (item) {
                     __recursion($ctrl.treeData);
                     $ctrl.ngModel = item
@@ -33,7 +33,7 @@ main.app
 
                 function __recursion(list) {
                     if (list && list.length) {
-                        for (var i in list) {
+                        for (let i in list) {
                             list[i].itemActive = false
                             __recursion(list[i].children)
                         }
@@ -60,7 +60,7 @@ main.app
             controllerAs: '$ctrl',
             template: templateItem,
             controller: function () {
-                var $ctrl = this
+                let $ctrl = this
                 $ctrl.getItem = function (item) {
                     $ctrl.onSelect({item: item})
                 }

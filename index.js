@@ -2,7 +2,10 @@
  * Example App:
  */
 var testApp = angular.module('test', ['ngAnimate', 'angularjs-directive-dy'])
-    .controller('tooltipCtrl', function () {})
+
+testApp
+    .controller('tooltipCtrl', function () {
+    })
     .controller('stepCtrl', function () {
         var $ctrl = this
         $ctrl.step = 0
@@ -104,5 +107,33 @@ var testApp = angular.module('test', ['ngAnimate', 'angularjs-directive-dy'])
         ]
         $ctrl.removeModal = function () {
             $ctrl.treeVal = null
+        }
+    })
+
+testApp
+    .directive('dyScroll', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            transclude: true,
+            template: `
+                <div class="dy-scroll-container content-over-y">
+                    <a class="scroll-bar-y"></a>
+                    <div class="scroll-content">
+                        <ng-transclude></ng-transclude>
+                    </div>
+                </div>
+            `,
+            scope: true,
+            bindToController: true,
+            controllerAs: '$ctrl',
+            controller: function () {},
+            link: function ($scope, $elem, $attr) {
+                let $ctrl = $scope.$ctrl
+                console.log($elem)
+                // $elem.on('click', function (e) {
+                //     console.log(e)
+                // })
+            }
         }
     })

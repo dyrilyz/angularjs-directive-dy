@@ -5,6 +5,7 @@
 
 import main from '../main'
 import template from './uploader.html'
+import angular from 'angular'
 import './uploader.less'
 
 main.app
@@ -42,15 +43,15 @@ main.app
                 $scope.$watch('ngModelTemp.length', function (v1, v2) {
                     if (v1 != v2) {
                         // 刷新dom元素，防止文件留在队列中
-                        var addIcon = $elem.find('input').parent()
+                        let addIcon = $elem.find('input').parent()
                         $elem.find('input').remove()
                         addIcon.append($compile(
                             '<input type="file" dy-uploader-input multiple="multiple" accept="image/*" ng-model="ngModelTemp"/>'
                         )($scope))
                         // 判断图片数量是否超标
                         if (($scope.ngModelTemp.length + $scope.ngModel.length) <= $scope.maxLength) {
-                            for (var i in $scope.ngModelTemp) {
-                                for (var j in $scope.ngModel) {
+                            for (let i in $scope.ngModelTemp) {
+                                for (let j in $scope.ngModel) {
                                     // 判断是否重名
                                     if ($scope.ngModelTemp[i].name == $scope.ngModel[j].name) {
                                         $scope.repeatNameError()
@@ -74,7 +75,7 @@ main.app
                             }
                             // 为ngModel和pictureList做遍历
                             angular.forEach($scope.ngModelTemp, function (item) {
-                                var reader = new FileReader()
+                                let reader = new FileReader()
                                 reader.readAsDataURL(item)
                                 reader.onload = function (event) {
                                     $scope.ngModel.push(item)

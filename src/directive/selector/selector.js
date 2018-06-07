@@ -75,7 +75,7 @@ main.app.directive('dySelector', ['$document', function ($document) {
             }
 
             function refreshList() {
-                for (var i in $scope.dyList) {
+                for (let i in $scope.dyList) {
                     $scope.dyList[i].dyKey = $scope.dyList[i][$scope.objectHandle.dyKey]
                     $scope.dyList[i].dyVal = $scope.dyList[i][$scope.objectHandle.dyVal]
                 }

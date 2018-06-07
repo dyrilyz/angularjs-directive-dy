@@ -5,14 +5,14 @@ main.app.directive('dyTooltip', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
-            var dom = element[0]
-            var span = document.createElement('span')
-            var str = document.createTextNode(attr.tip)
+            let dom = element[0]
+            let span = document.createElement('span')
+            let str = document.createTextNode(attr.tip)
             span.appendChild(str)
             span.setAttribute('class', 'dy-tooltip')
-            var util = {
+            let util = {
                 styleTools: function (dom, obj) {
-                    for (var x in obj) {
+                    for (let x in obj) {
                         dom.style[x] = obj[x]
                     }
                 },
@@ -22,7 +22,7 @@ main.app.directive('dyTooltip', function () {
                         top: e.layerY + 30 + 'px',
                     })
                     dom.appendChild(span)
-                    var opacity = eval(getComputedStyle(span).opacity)
+                    let opacity = eval(getComputedStyle(span).opacity)
 
                     function animate() {
                         if (opacity < 0.81) {
