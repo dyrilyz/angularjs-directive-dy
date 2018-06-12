@@ -2,136 +2,317 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-animate.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="directive/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/angular-directive-dy.css">
     <style type="text/css">
-        .comment {
-            font-size: 14px;
+        .block-circle {
+            width: 200px;
+            height: 200px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+            background-color: #999;
         }
     </style>
 </head>
-<body>
+<body ng-app="test">
 <header class="navbar navbar-default">
     <div class="container">
         <h3>angularjs-directive-dy示例</h3>
     </div>
 </header>
-<div ng-app="test" ng-controller="testSelector" class="container">
-
+<div ng-app="test" class="container">
     <!--dy-tooltip 指令事例-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-tooltip 指令</h3>
-        </div>
-        <div class="panel-body">
-            <ul>
-                <li><a href="javascript:;" title="这是一个指令">测试1</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="只需要在标签中引入">测试2</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="一">测试3</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="个">测试4</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="指">测试5</a></li>
-                <li><a href="javascript:;" dy-tooltip data-tip="令">测试6</a></li>
-            </ul>
-        </div>
+    <div ng-controller="tooltipCtrl">
+        <dy-panel panel-title="dy-tooltip 指令" theme="primary">
+            <p>鼠标悬浮在圆上出现提示文字</p>
+            <div class="block-circle" dy-tooltip data-tip="提示文字"></div>
+        </dy-panel>
     </div>
-
     <!--dy-step 指令-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-step 指令</h3>
-        </div>
-        <div class="panel-body">
-            <dy-step step-list="stepList" step="1"></dy-step>
-        </div>
+    <div ng-controller="stepCtrl as $ctrl">
+        <dy-panel panel-title="dy-step 指令" theme="primary">
+            <dy-step step-list="$ctrl.stepList" step="{{$ctrl.step}}"></dy-step>
+            <button class="btn btn-primary" ng-click="$ctrl.next()">下一步</button>
+        </dy-panel>
     </div>
-
     <!--dy-selector 指令-->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">dy-selector 指令</h3>
-        </div>
-        <div class="panel-body">
+    <div ng-controller="selectorCtrl as $ctrl">
+        <dy-panel panel-title="dy-selector 指令" theme="primary">
             <div class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-2">字符串下拉框</label>
-                    <div class="col-sm-4">
-                        <dy-selector ng-model="a" dy-list="list" z-index="12"></dy-selector>
+                    <label class="control-label col-xs-2">字符串下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="14"
+                                     placeholder="请选择"></dy-selector>
                     </div>
-                    <div class="col-sm-4" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="a"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">对象下拉框</label>
-                    <div class="col-sm-4">
-                        <dy-selector ng-model="b" dy-list="list2" z-index="11"></dy-selector>
-                    </div>
-                    <div class="col-sm-4" style="line-height: 34px;">
-                        选择的值为：<span ng-bind="b"></span>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：
+                        <span ng-bind="$ctrl.a"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2">禁用下拉框</label>
-                    <div class="col-sm-4">
-                        <dy-selector disabled></dy-selector>
+                    <label class="control-label col-xs-2">对象下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.b" dy-list="$ctrl.dyList2" z-index="13"
+                                     placeholder="请选择"></dy-selector>
+                    </div>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：
+                        <span ng-bind="$ctrl.b"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">简洁下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="12" mode="simple"
+                                     placeholder="请选择"></dy-selector>
+                    </div>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：
+                        <span ng-bind="$ctrl.a"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">映射下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.c" dy-list="$ctrl.dyList3" z-index="11"
+                                     object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
+                                     placeholder="请选择"></dy-selector>
+                    </div>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：
+                        <span ng-bind="$ctrl.c"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">延时（异步）下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector ng-model="$ctrl.d" dy-list="$ctrl.dyList4" z-index="10"
+                                     object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
+                                     placeholder="请选择"></dy-selector>
+                    </div>
+                    <div class="col-xs-6" style="line-height: 34px;">
+                        选择的值为：
+                        <span ng-bind="$ctrl.d"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2">禁用下拉框</label>
+                    <div class="col-xs-4">
+                        <dy-selector z-index="9" disabled></dy-selector>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-2"></label>
+                    <div class="col-xs-4">
+                        <button class="btn btn-warning" ng-click="$ctrl.selectReset()">重置</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </dy-panel>
     </div>
+    <!--dy-uploader指令-->
+    <div ng-controller="uploaderCtrl as $ctrl">
+        <dy-panel panel-title="dy-uploader 指令" theme="primary">
+            <dy-uploader ng-model="$ctrl.files" max-length="3" max-size="1024 * 1024 * 5"
+                         file-type="/.(jpe?g|gif|png|bmp)$/i" file-type-error="$ctrl.fileTypeError()"
+                         max-length-error="$ctrl.maxLengthError()" max-size-error="$ctrl.maxSizeError()"
+                         repeat-name-error="$ctrl.repeatNameError()"></dy-uploader>
+            <button class="btn btn-primary" ng-click="$ctrl.showFiles()">获取文件数组</button>
+            <div>error-msg:
+                <span ng-bind="$ctrl.errorMsg"></span>
+            </div>
+        </dy-panel>
+    </div>
+    <!--dy-tree指令-->
+    <div ng-controller="treeCtrl as $ctrl">
+        <dy-panel panel-title="基础树指令" theme="primary">
+            <dy-tree tree-data="$ctrl.dataList" ng-model="$ctrl.treeVal"></dy-tree>
+            <div>
+                <button ng-click="$ctrl.removeModal()" class="btn btn-warning">清空model值</button>
+            </div>
+            <div>你选择的树节点名称为：
+                <span ng-bind="$ctrl.treeVal.name"></span>
+            </div>
+        </dy-panel>
+    </div>
+
+    <style>
+        .dy-scroll-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dy-scroll-container.content-over-y {
+
+        }
+
+        .scroll-bar-y {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            background-color: #d4d4d4;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        .scroll-bar-y:hover {
+            background-color: #c9c9c9;
+        }
+
+        .scroll-content {
+            background-color: #eee;
+            position: relative;
+        }
+
+        .test {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #999;
+            margin-bottom: 100px;
+        }
+    </style>
+    <button class="btn btn-warning" onclick="getOffSet()">测试</button>
+    <div class="test" dy-scroll>
+        <p>0000000000001</p>
+        <p>0000000000002</p>
+        <p>0000000000003</p>
+    </div>
+    <!--<dy-panel theme="primary" panel-title="hello">-->
+        <!--<style>-->
+            <!--html, body, #container {-->
+                <!--height: 100%;-->
+                <!--margin: 0;-->
+            <!--}-->
+
+            <!--#container {-->
+                <!--padding: 2rem;-->
+                <!--box-sizing: border-box;-->
+                <!--overflow-y: hidden;-->
+                <!--position: relative;-->
+                <!--padding-right: 30px;-->
+                <!--margin-bottom: 500px;-->
+                <!--height: 250px;-->
+            <!--}-->
+
+            <!--.scrollbar {-->
+                <!--height: 166px;-->
+                <!--width: 20px;-->
+                <!--border-radius: 20px;-->
+                <!--background: #ccc;-->
+                <!--position: absolute;-->
+                <!--right: 0;-->
+            <!--}-->
+        <!--</style>-->
+        <!--<div id="container">-->
+            <!--<div class="scrollbar"></div>-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+            <!--bla, bla, bla... 一大段很长的文字-->
+        <!--</div>-->
+        <!--<script>-->
+            <!--window.onload = function () {-->
+                <!--var scrollbar = document.querySelector('.scrollbar');-->
+                <!--var container = scrollbar.parentNode;-->
+                <!--container.scrollbar = scrollbar;-->
+                <!--container.ratio =-->
+                    <!--(container.scrollHeight - container.offsetHeight) / (container.offsetHeight - scrollbar.offsetHeight);-->
+                <!--container.addEventListener('mousewheel', function (e) {-->
+                    <!--this.scrollTop += e.deltaY;-->
+                    <!--this.scrollbar.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px';-->
+                <!--});-->
+                <!--container.addEventListener('mousedown', function (e) {-->
+                    <!--if (e.target === this.scrollbar) {-->
+                        <!--this.prevY = e.pageY;-->
+                    <!--}-->
+                <!--});-->
+                <!--container.addEventListener('mouseup', function (e) {-->
+                    <!--this.prevY = null;-->
+                <!--});-->
+                <!--container.addEventListener('mousemove', function (e) {-->
+                    <!--if (this.prevY) {-->
+                        <!--this.scrollTop += (e.pageY - this.prevY) * this.ratio;-->
+                        <!--this.scrollbar.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px';-->
+                        <!--this.prevY = e.pageY;-->
+                    <!--}-->
+                    <!--e.preventDefault();-->
+                <!--});-->
+            <!--}-->
+        <!--</script>-->
+    <!--</dy-panel>-->
 </div>
-<script src="directive/tooltip/tooltip.js"></script>
-<script src="directive/selector/selector.js"></script>
-<script src="directive/step/step.js"></script>
-<script>
-    // 随机为查询列表添加一组数据
-    function getArray() {
-        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        var result = []
-        for (var i = 0; i < 20; i++) {
-            result.push(
-                a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-                + a[parseInt(Math.random() * 10)]
-            )
-        }
-        return result
-    }
-
-    // 随机为查询列表添加一组对象
-    function getObjects() {
-        var a = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        var b = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        var result = []
-        for (var i = 0; i < 20; i++) {
-            result.push({
-                key: b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)] + b[parseInt(Math.random() * 10)],
-                value: a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)] + a[parseInt(Math.random() * 10)]
-            })
-        }
-        return result
-    }
-
-    angular.module('test', ['directive.tooltip', 'directive.selector', 'directive.step'])
-        .controller('testSelector', function ($scope) {
-            $scope.list = getArray();
-            $scope.list2 = getObjects();
-            $scope.step = 0
-            $scope.stepList = ['第一步', '第二步', '第三步']
-            $scope.next = function () {
-                $scope.step++
-            }
-        })
-</script>
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-animate.min.js"></script>
+<script src="dist/js/angular-directive-dy.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

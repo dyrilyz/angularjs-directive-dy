@@ -1,0 +1,38 @@
+.dy-panel {
+    @defaultBorder: 1px solid #c2c2c2;
+    @borderRadius: 5px;
+    border: @defaultBorder;
+    border-radius: @borderRadius;
+    margin-bottom: 20px;
+    * {
+        box-sizing: border-box;
+    }
+    &>&-heading {
+        @headHeight: 30px;
+        @padding: 5px;
+        @defaultBackground: #eeeeee;
+        height: @headHeight + @padding * 2;
+        line-height: @headHeight;
+        padding: @padding 10px;
+        border-bottom: @defaultBorder;
+        background-color: @defaultBackground;
+        position: relative;
+        border-radius: @borderRadius @borderRadius 0 0;
+    }
+    &>&-body {
+        padding: 15px;
+        position: relative;
+        border-radius: 0 0 @borderRadius @borderRadius;
+    }
+    .popularStyle(@styleName, @borderColor, @headBg, @color) {
+        &.@{styleName} {
+            border-color: @borderColor;
+            .dy-panel-heading {
+                border-color: @borderColor;
+                background-color: @headBg;
+                color: @color;
+            }
+        }
+    }
+    .popularStyle(primary, #337ab7, #337ab7, #fff);
+}

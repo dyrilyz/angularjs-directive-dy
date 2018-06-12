@@ -1,0 +1,5 @@
+<ul class="dy-step">
+    <li ng-repeat="item in stepList track by $index" ng-class="{active: isActive($index)}">
+        <span ng-bind="item"></span>
+    </li>
+</ul>

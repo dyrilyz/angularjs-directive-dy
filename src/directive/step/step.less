@@ -1,0 +1,85 @@
+@mainColor: #337ab7;
+@stepBg: #efefef;
+@stepDeg: 30px;
+
+.dy-step {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    li {
+        background-color: @stepBg;
+        display: inline-block;
+        padding: 0 44px 0 64px;
+        height: 36px;
+        line-height: 36px;
+        position: relative;
+
+        .loop(@num1, @num2) when (@num2 > 0) {
+
+            .loop (@num1 + 1, @num2 - 1);
+
+            &:nth-child(@{num2}) {
+                z-index: @num1;
+            }
+        }
+
+        .loop (1, 10);
+
+        & + li {
+            margin-left: 10px;
+
+            &:before {
+                border-left: @stepDeg solid #fff;
+            }
+
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
+        .triangle (@left) {
+            content: '';
+            display: block;
+            border-left: @stepDeg solid @stepBg;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            position: absolute;
+            left: @left;
+            top: 0;
+        }
+
+        &:before {
+            .triangle(0);
+        }
+
+        &:after {
+            .triangle(100%);
+        }
+
+        &:first-child {
+            &.active {
+                &:before {
+                    border-left-color: @mainColor;
+                }
+            }
+        }
+
+        // 选中效果
+        &.active {
+            color: #fff;
+            background-color: @mainColor;
+            &:after {
+                border-left-color: @mainColor;
+            }
+        }
+    }
+}
