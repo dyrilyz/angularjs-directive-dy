@@ -127,13 +127,33 @@ testApp
             scope: true,
             bindToController: true,
             controllerAs: '$ctrl',
-            controller: function () {},
+            controller: function () {
+            },
             link: function ($scope, $elem, $attr) {
                 let $ctrl = $scope.$ctrl
-                console.log($elem)
-                // $elem.on('click', function (e) {
-                //     console.log(e)
-                // })
+                let sContainer = $elem[0]                                   // 外层容器
+                let sContent = $elem[0].querySelector('.scroll-content')    // 填充容器
+                let barY = $elem[0].querySelector('.scroll-bar-y')          // 纵向滚动条
+                barY.style.height = sContainer.offsetHeight * sContainer.offsetHeight / sContent.offsetHeight + 'px'
+                sContainer.ratio = (sContainer.scrollHeight - sContainer.offsetHeight) / (sContainer.offsetHeight - barY.offsetHeight)
+                console.log(sContainer.scrollHeight, sContainer.offsetHeight)
+                sContainer.addEventListener('mousedown', function (event) {
+                    if (event.target === barY) {
+                        this.prevY = event.pageY
+                    }
+                })
+                sContainer.addEventListener('mouseup', function (event) {
+                    this.prevY = null
+                })
+                sContainer.addEventListener('mousemove', function (event) {
+                    if (this.prevY) {
+                        // if (this.scrollTop + this.offsetHeight >= sContent.offsetHeight) return
+                        this.scrollTop += (event.pageY - this.prevY) * this.ratio
+                        barY.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px'
+                        this.prevY = event.pageY
+                    }
+                    event.preventDefault()
+                })
             }
         }
     })
