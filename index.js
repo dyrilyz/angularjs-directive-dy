@@ -79,29 +79,29 @@ testApp
         $ctrl.dataList = [
             {
                 id: 1, name: '新建文件夹1', type: 1, parentId: 0, children: [
-                {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
-                {
-                    id: 4, name: '新建文件夹4', type: 2, parentId: 1, children:
-                    [
-                        {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
-                        {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
-                    ]
-                }
-            ]
+                    {id: 3, name: '新建文件夹3', type: 1, parentId: 1},
+                    {
+                        id: 4, name: '新建文件夹4', type: 2, parentId: 1, children:
+                            [
+                                {id: 8, name: '新建文件夹8', type: 2, parentId: 4},
+                                {id: 9, name: '新建文件夹9', type: 2, parentId: 4},
+                            ]
+                    }
+                ]
             },
             {
                 id: 2, name: '新建文件夹2', type: 1, parentId: 0, children:
-                [
-                    {
-                        id: 5,
-                        name: '新建文件夹5',
-                        type: 2,
-                        parentId: 2,
-                        children: [{id: 10, name: '新建文件夹10', type: 2, parentId: 5}]
-                    },
-                    {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
-                    {id: 7, name: '新建文件夹7', type: 2, parentId: 2}
-                ]
+                    [
+                        {
+                            id: 5,
+                            name: '新建文件夹5',
+                            type: 2,
+                            parentId: 2,
+                            children: [{id: 10, name: '新建文件夹10', type: 2, parentId: 5}]
+                        },
+                        {id: 6, name: '新建文件夹6', type: 2, parentId: 2},
+                        {id: 7, name: '新建文件夹7', type: 2, parentId: 2}
+                    ]
             }
 
         ]
@@ -118,7 +118,7 @@ testApp
             transclude: true,
             template: `
                 <div class="dy-scroll-container content-over-y">
-                    <a class="scroll-bar-y"></a>
+                    <a class="scroll-bar-y" ng-show="$ctrl.hasBarY"></a>
                     <div class="scroll-content">
                         <ng-transclude></ng-transclude>
                     </div>
@@ -134,9 +134,11 @@ testApp
                 let sContainer = $elem[0]                                   // 外层容器
                 let sContent = $elem[0].querySelector('.scroll-content')    // 填充容器
                 let barY = $elem[0].querySelector('.scroll-bar-y')          // 纵向滚动条
+                if (sContainer.offsetHeight < sContent.offsetHeight) {
+                    $ctrl.hasBarY = true
+                }
                 barY.style.height = sContainer.offsetHeight * sContainer.offsetHeight / sContent.offsetHeight + 'px'
                 sContainer.ratio = (sContainer.scrollHeight - sContainer.offsetHeight) / (sContainer.offsetHeight - barY.offsetHeight)
-                console.log(sContainer.scrollHeight, sContainer.offsetHeight)
                 sContainer.addEventListener('mousedown', function (event) {
                     if (event.target === barY) {
                         this.prevY = event.pageY
@@ -147,12 +149,27 @@ testApp
                 })
                 sContainer.addEventListener('mousemove', function (event) {
                     if (this.prevY) {
-                        // if (this.scrollTop + this.offsetHeight >= sContent.offsetHeight) return
+                        if (this.prevY < event.pageY && this.scrollTop + this.offsetHeight >= sContent.offsetHeight) {
+                            this.scrollTop = sContent.offsetHeight - this.offsetHeight
+                            barY.style.top = (this.scrollTop + this.offsetHeight - barY.offsetHeight) + 'px'
+                            return
+                        }
                         this.scrollTop += (event.pageY - this.prevY) * this.ratio
                         barY.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px'
                         this.prevY = event.pageY
                     }
                     event.preventDefault()
+                })
+                sContainer.addEventListener('mousewheel', function (event) {
+                    console.log(event.deltaY)
+                    event.preventDefault()
+                    if (event.deltaY > 0 && this.scrollTop + this.offsetHeight >= sContent.offsetHeight) {
+                        this.scrollTop = sContent.offsetHeight - this.offsetHeight
+                        barY.style.top = (this.scrollTop + this.offsetHeight - barY.offsetHeight) + 'px'
+                        return
+                    }
+                    this.scrollTop += event.deltaY
+                    barY.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px'
                 })
             }
         }
