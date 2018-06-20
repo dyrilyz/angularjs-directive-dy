@@ -2,3 +2,4 @@
 .vscode
 test.css
 node_modules/
+test/

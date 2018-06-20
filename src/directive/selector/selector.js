@@ -47,7 +47,7 @@ import './selector.less'
 
 main.app.directive('dySelector', ['$document', function ($document) {
     return {
-        restrict: 'E',
+        restrict: 'EA',
         replace: true,
         scope: {
             ngModel: '=',
