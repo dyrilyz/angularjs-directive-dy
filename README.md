@@ -60,7 +60,7 @@ var app = angular.module('yourModuleName', [directiveDy]);
 
 ``disabled``：      只读模式，加上这个属性（无需赋值）后将无法操作下拉框。
 
-``zIndex``：        当两个dy-selector上下布局的时候会出现层高问题，这个参数的值决定哪个层高优先。
+~~``zIndex``~~：    已废弃。层高由指令自动定级，从9999递减。
 
 ``mode``：          当存在mode属性，并且值为simple时，可屏蔽匹配搜索框。
 
@@ -68,6 +68,8 @@ var app = angular.module('yourModuleName', [directiveDy]);
 
 ``objectHandle``：  用于映射dyList对象的字段。当你的对象过于复杂时，你无需将对象转换为指定类型，
                     因为这个属性可以帮你做这些事情！
+                    
+``dyChange``(新属性)：function类型，用于监听selector值得变化。
 
 下面分别演示了传入字符串和传入数组：
 
@@ -107,9 +109,12 @@ $scope.dyList3 = [
    ng-model="myData"
    dy-list="dyList3"
    placeholder="请选择"
-   object-handle="{dyKey: 'brand', dyVal: 'encoding'}">
+   object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
+   dy-change="myChange()">
 </dy-selector>
 ```
+
+*更新于2018.06.25*
 
 ## <a name="step">dy-step指令</a>
 
@@ -119,12 +124,7 @@ $scope.dyList3 = [
 ***Example：***
 
 ```html
-<script src="angularjs-directive-dy/directive/step/step.js"></script>
-<link rel="stylesheet" href="angularjs-directive-dy/directive/step/step.css">
 <dy-step step="0" step-list="['第一步','第二步','第三步']"></dy-step>
-<script>
-    angular.module('app', ['directive.step']);
-</script>
 ```
 
 **属性详解：**

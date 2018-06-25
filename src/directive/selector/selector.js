@@ -45,87 +45,99 @@ import main from '../main'
 import template from './selector.html'
 import './selector.less'
 
-main.app.directive('dySelector', ['$document', function ($document) {
-    return {
-        restrict: 'EA',
-        replace: true,
-        scope: {
-            ngModel: '=',
-            dyList: '=',
-            mode: '@',
-            objectHandle: '=',
-            placeholder: '@'
-        },
-        template: template,
-        link: function ($scope, $element, $attr) {
-            if (!$scope.objectHandle) {
-                // 检测传入列表对象类型
-                if ($scope.dyList && $scope.dyList.length > 0) {
-                    if (typeof $scope.dyList[0] == 'object') {
-                        if (typeof $scope.dyList[0].dyKey == 'undefined' || typeof $scope.dyList[0].dyVal == 'undefined') {
-                            throw Error('对象格式不支持，请按照{dyKey : xx, dyVal : xx}格式传参');
+main.app
+    .service('dySelectorSvc', function () {
+        let zIndex = 9999
+        return {
+            getZIndex() {
+                return --zIndex
+            }
+        }
+    })
+    .directive('dySelector', ['$document', 'dySelectorSvc', function ($document, dySelectorSvc) {
+        return {
+            restrict: 'EA',
+            replace: true,
+            scope: {
+                ngModel: '=',
+                dyList: '=',
+                mode: '@',
+                objectHandle: '=',
+                placeholder: '@',
+                dyChange: '&'
+            },
+            template: template,
+            link: function ($scope, $element, $attr) {
+                let refreshList = () => {
+                    for (let i in $scope.dyList) {
+                        $scope.dyList[i].dyKey = $scope.dyList[i][$scope.objectHandle.dyKey]
+                        $scope.dyList[i].dyVal = $scope.dyList[i][$scope.objectHandle.dyVal]
+                    }
+                }
+                if (!$scope.objectHandle) {
+                    // 检测传入列表对象类型
+                    if ($scope.dyList && $scope.dyList.length > 0) {
+                        if (typeof $scope.dyList[0] == 'object') {
+                            if (typeof $scope.dyList[0].dyKey == 'undefined' || typeof $scope.dyList[0].dyVal == 'undefined') {
+                                throw Error('对象格式不支持，请按照{dyKey : xx, dyVal : xx}格式传参');
+                            }
                         }
                     }
-                }
-            } else {
-                refreshList()
-                $scope.$watch('dyList.length', function () {
-                    refreshList()
-                })
-            }
-
-            function refreshList() {
-                for (let i in $scope.dyList) {
-                    $scope.dyList[i].dyKey = $scope.dyList[i][$scope.objectHandle.dyKey]
-                    $scope.dyList[i].dyVal = $scope.dyList[i][$scope.objectHandle.dyVal]
-                }
-            }
-
-            // 检测层高传入
-            if ($attr.zIndex && $attr.zIndex.length > 0) {
-                $element.css({'z-index': $attr.zIndex})
-            }
-            // 检测是否禁用
-            if ($attr.disabled != '' && $attr.disabled != 'disabled') {
-                $scope.selectorAble = true
-            } else {
-                $scope.selectorAble = false
-            }
-            $document.on('click', function (e) {
-                if (e.target != $element[0]) {
-                    isChild(e.target.parentElement)
-                }
-            })
-
-            function isChild(e) {
-                if (e) {
-                    if (e != $element[0]) {
-                        isChild(e.parentElement)
-                    }
                 } else {
-                    $scope.isShowList = false
-                    $scope.$apply()
+                    refreshList()
+                    $scope.$watch('dyList.length', function () {
+                        refreshList()
+                    })
                 }
-            }
+                $scope.$watch('ngModel', (v1, v2) => {
+                    if (v1 !== v2) {
+                        $scope.dyChange()
+                    }
+                })
 
-            $scope.isShowList = false
-            $scope.keyWord = ''
-            $scope.setItem = function (item) {
-                $scope.ngModel = item
+                $element.css({'z-index': `${dySelectorSvc.getZIndex()}`})
+                $scope.selectorAble = !angular.isDefined($attr.disabled)
+
+                let checkDom = e => {
+                    if (e.target != $element[0]) {
+                        isChild(e.target.parentElement)
+                    }
+                }
+
+                let isChild = e => {
+                    if (e) {
+                        if (e != $element[0]) {
+                            isChild(e.parentElement)
+                        }
+                    } else {
+                        $scope.isShowList = false
+                        $scope.$apply()
+                    }
+                }
+
+                $document.on('click', checkDom)
+
+                $scope.$on('$destroy', () => {
+                    $document.off(checkDom)
+                })
                 $scope.isShowList = false
                 $scope.keyWord = ''
-            }
-            $scope.showList = function () {
-                $scope.isShowList = !$scope.isShowList
-                $scope.keyWord = ''
-            }
-            $scope.itemShow = function (item) {
-                if (typeof item == 'object') {
-                    return item.dyKey.toUpperCase().indexOf($scope.keyWord.toUpperCase()) != -1
-                } else {
-                    return item.toUpperCase().indexOf($scope.keyWord.toUpperCase()) != -1
+                $scope.setItem = function (item) {
+                    $scope.ngModel = item
+                    $scope.isShowList = false
+                    $scope.keyWord = ''
+                }
+                $scope.showList = function () {
+                    $scope.isShowList = !$scope.isShowList
+                    $scope.keyWord = ''
+                }
+                $scope.itemShow = function (item) {
+                    if (typeof item == 'object') {
+                        return item.dyKey.toUpperCase().indexOf($scope.keyWord.toUpperCase()) != -1
+                    } else {
+                        return item.toUpperCase().indexOf($scope.keyWord.toUpperCase()) != -1
+                    }
                 }
             }
         }
-    }
-}])
+    }])
