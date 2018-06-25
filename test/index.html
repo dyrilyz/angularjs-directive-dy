@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/angular-directive-dy.css">
+</head>
+<body ng-app="testApp">
+<div class="container">
+    <div ng-controller="selector as $ctrl" style="margin-top: 300px;">
+        <dy-panel theme="primary" panel-title="下拉测试">
+            <dy-table table-conf="$ctrl.tableConf"></dy-table>
+            <button class="btn btn-warning" ng-click="$ctrl.printConf()">获取</button>
+            <span ng></span>
+        </dy-panel>
+    </div>
+</div>
+
+<script src="../lib/angular.min.js"></script>
+<script src="../lib/angular-animate.min.js"></script>
+<script src="../lib/angular-sanitize.min.js"></script>
+<script src="../dist/js/angular-directive-dy.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
