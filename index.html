@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">字符串下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="14"
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList"
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">对象下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.b" dy-list="$ctrl.dyList2" z-index="13"
+                        <dy-selector ng-model="$ctrl.b" dy-list="$ctrl.dyList2"
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">简洁下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" z-index="12" mode="simple"
+                        <dy-selector ng-model="$ctrl.a" dy-list="$ctrl.dyList" mode="simple"
                                      placeholder="请选择"></dy-selector>
                     </div>
                     <div class="col-xs-6" style="line-height: 34px;">
@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">映射下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.c" dy-list="$ctrl.dyList3" z-index="11"
+                        <dy-selector ng-model="$ctrl.c" dy-list="$ctrl.dyList3"
                                      object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
                                      placeholder="请选择"></dy-selector>
                     </div>
@@ -91,7 +91,7 @@
                 <div class="form-group">
                     <label class="control-label col-xs-2">延时（异步）下拉框</label>
                     <div class="col-xs-4">
-                        <dy-selector ng-model="$ctrl.d" dy-list="$ctrl.dyList4" z-index="10"
+                        <dy-selector ng-model="$ctrl.d" dy-list="$ctrl.dyList4"
                                      object-handle="{dyKey: 'brand', dyVal: 'encoding'}"
                                      placeholder="请选择"></dy-selector>
                     </div>
@@ -140,175 +140,6 @@
             </div>
         </dy-panel>
     </div>
-
-    <style>
-        .dy-scroll-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dy-scroll-container.content-over-y {
-
-        }
-
-        .scroll-bar-y {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 10px;
-            background-color: #d4d4d4;
-            border-radius: 10px;
-            z-index: 10;
-        }
-
-        .scroll-bar-y:hover {
-            background-color: #c9c9c9;
-        }
-
-        .scroll-content {
-            background-color: #eee;
-            position: relative;
-        }
-
-        .test {
-            width: 100%;
-            height: 200px;
-            border: 1px solid #999;
-            margin-bottom: 100px;
-        }
-    </style>
-    <button class="btn btn-warning" onclick="getOffSet()">测试</button>
-    <div class="test" dy-scroll>
-        <p>0000000000001</p>
-        <p>0000000000002</p>
-        <p>0000000000003</p>
-    </div>
-    <!--<dy-panel theme="primary" panel-title="hello">-->
-        <!--<style>-->
-            <!--html, body, #container {-->
-                <!--height: 100%;-->
-                <!--margin: 0;-->
-            <!--}-->
-
-            <!--#container {-->
-                <!--padding: 2rem;-->
-                <!--box-sizing: border-box;-->
-                <!--overflow-y: hidden;-->
-                <!--position: relative;-->
-                <!--padding-right: 30px;-->
-                <!--margin-bottom: 500px;-->
-                <!--height: 250px;-->
-            <!--}-->
-
-            <!--.scrollbar {-->
-                <!--height: 166px;-->
-                <!--width: 20px;-->
-                <!--border-radius: 20px;-->
-                <!--background: #ccc;-->
-                <!--position: absolute;-->
-                <!--right: 0;-->
-            <!--}-->
-        <!--</style>-->
-        <!--<div id="container">-->
-            <!--<div class="scrollbar"></div>-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-            <!--bla, bla, bla... 一大段很长的文字-->
-        <!--</div>-->
-        <!--<script>-->
-            <!--window.onload = function () {-->
-                <!--var scrollbar = document.querySelector('.scrollbar');-->
-                <!--var container = scrollbar.parentNode;-->
-                <!--container.scrollbar = scrollbar;-->
-                <!--container.ratio =-->
-                    <!--(container.scrollHeight - container.offsetHeight) / (container.offsetHeight - scrollbar.offsetHeight);-->
-                <!--container.addEventListener('mousewheel', function (e) {-->
-                    <!--this.scrollTop += e.deltaY;-->
-                    <!--this.scrollbar.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px';-->
-                <!--});-->
-                <!--container.addEventListener('mousedown', function (e) {-->
-                    <!--if (e.target === this.scrollbar) {-->
-                        <!--this.prevY = e.pageY;-->
-                    <!--}-->
-                <!--});-->
-                <!--container.addEventListener('mouseup', function (e) {-->
-                    <!--this.prevY = null;-->
-                <!--});-->
-                <!--container.addEventListener('mousemove', function (e) {-->
-                    <!--if (this.prevY) {-->
-                        <!--this.scrollTop += (e.pageY - this.prevY) * this.ratio;-->
-                        <!--this.scrollbar.style.top = (this.scrollTop + this.scrollTop / this.ratio) + 'px';-->
-                        <!--this.prevY = e.pageY;-->
-                    <!--}-->
-                    <!--e.preventDefault();-->
-                <!--});-->
-            <!--}-->
-        <!--</script>-->
-    <!--</dy-panel>-->
 </div>
 <script src="lib/angular.min.js"></script>
 <script src="lib/angular-animate.min.js"></script>
