@@ -12,15 +12,24 @@
         <dy-panel theme="primary" panel-title="表格测试">
             <dy-table table-conf="$ctrl.tableConf"></dy-table>
             <button class="btn btn-warning" ng-click="$ctrl.printConf()">获取</button>
-            <span ng></span>
+            <span></span>
         </dy-panel>
+        <test-dir ng-init="$ctrl.testDirData={name: 1, val: 2}" c-model="$ctrl.testDirData"></test-dir>
+        <!--{{$ctrl.testDirData}}-->
+        <div>
+            <span style="margin-right: 10px;" ng-repeat="item in $ctrl.filterTexts track by $index">{{item | filterEnum:'user_status'}}</span>
+        </div>
+        <div>
+            <span style="margin-right: 10px;" ng-repeat="item in $ctrl.filterTexts track by $index">{{item | filterEnum:'out_cash_status'}}</span>
+        </div>
     </div>
 </div>
 
+<script src="../lib/angular-loader.min.js"></script>
+<script src="../dist/js/angular-directive-dy.js"></script>
 <script src="../lib/angular.min.js"></script>
 <script src="../lib/angular-animate.min.js"></script>
 <script src="../lib/angular-sanitize.min.js"></script>
-<script src="../dist/js/angular-directive-dy.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
